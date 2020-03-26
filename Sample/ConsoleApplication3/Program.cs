@@ -127,7 +127,7 @@ namespace ConsoleApplication3
         public ATM(Account[] ac)
         {
             this.ac = ac;
-            Console.WriteLine("hello from ATM")
+            Console.WriteLine("hello from ATM");
 
             // an infanite loop to keep the flow of controll going on and on
             while (true)
