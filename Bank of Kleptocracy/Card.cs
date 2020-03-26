@@ -24,12 +24,12 @@ namespace Bank_of_Kleptocracy
             this.bankNumber = bankNumber;
         }
 
-        int getAccountNumber()
+        int GetAccountNumber()
         {
             return accountNumber;
         }
 
-        int getBankNumber()
+        int GetBankNumber()
         {
             return bankNumber;
         }
