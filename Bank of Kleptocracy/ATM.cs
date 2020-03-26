@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
 {
-    public partial class Form1 : Form
+    public partial class ATM : Form
     {
-        public Form1()
+        public ATM()
         {
             InitializeComponent();
         }
