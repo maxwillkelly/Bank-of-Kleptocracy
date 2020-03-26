@@ -47,12 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Bank.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="Bank.cs">
+    <Compile Include="Control.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bank.Designer.cs">
-      <DependentUpon>Bank.cs</DependentUpon>
+    <Compile Include="Control.Designer.cs">
+      <DependentUpon>Control.cs</DependentUpon>
     </Compile>
     <Compile Include="ATM.cs">
       <SubType>Form</SubType>
@@ -65,8 +66,8 @@
     <EmbeddedResource Include="ATM.resx">
       <DependentUpon>ATM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bank.resx">
-      <DependentUpon>Bank.cs</DependentUpon>
+    <EmbeddedResource Include="Control.resx">
+      <DependentUpon>Control.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

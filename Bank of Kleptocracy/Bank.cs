@@ -1,20 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
 {
-    public partial class Bank : Form
+    class Bank
     {
+        private Account[] accounts;
+        public int bankNumber { get; }
+
         public Bank()
         {
-            InitializeComponent();
+
+        }
+
+        public void InitAccount(int balance, int pin, int accountNumber)
+        {
+
+        }
+
+        public Account GetAccount(int accountNumber)
+        {
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                if (accounts[i].accountNumber == accountNumber)
+                {
+                    return accounts[i];
+                }
+            }
+            return null;
         }
     }
 }

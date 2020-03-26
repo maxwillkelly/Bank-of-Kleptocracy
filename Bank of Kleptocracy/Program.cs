@@ -16,7 +16,7 @@ namespace Bank_of_Kleptocracy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Bank());
+            Application.Run(new Control());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Bank_of_Kleptocracy
 {
-    partial class Bank
+    partial class Control
     {
         /// <summary>
         /// Required designer variable.
