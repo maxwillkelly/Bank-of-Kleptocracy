@@ -67,11 +67,11 @@ namespace Bank_of_Kleptocracy
 
         private Account FindAccount(int accountNumber, int bankNumber)
         {
-            foreach (var t in banks)
+            foreach (var bank in banks)
             {
-                if (t.BankNumber == bankNumber)
+                if (bank.BankNumber == bankNumber)
                 {
-                    return t.GetAccount(accountNumber);
+                    return bank.GetAccount(accountNumber);
                 }
             }
 
