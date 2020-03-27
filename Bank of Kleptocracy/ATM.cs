@@ -10,55 +10,106 @@ using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
 {
+    public enum AtmStates
+    {
+        Success,
+        NoActiveAccount,
+        NoCardInserted,
+        InvalidCardIndex,
+        IncorrectPin,
+        CardNotInitialised,
+        CardNotInserted,
+        AccountNotFound
+    }
+
     public partial class ATM : Form
     {
         const string branchName = "Bank of Kleptocracy";
-        Bank[] banks;
-        Account activeAccount;
-        Card cardInserted;
+
+        private Bank[] banks;
+        private Card[] cards;
+        private Account activeAccount;
+        private Card cardInserted;
 
         public ATM()
         {
             InitializeComponent();
+            InitBanks();
+            InitCards();
         }
-
         public void InitBanks()
         {
             banks = new Bank[10];
         }
 
-        public Account FindAccount(int accountNumber, int bankNumber)
+        public void InitCards()
         {
-            for (int i = 0; i < banks.Length; i++)
+            cards = new Card[10];
+        }
+
+        public int InsertCard(int cardIndex)
+        {
+            if (cardIndex >= cards.Length)
+                return (int)AtmStates.InvalidCardIndex;
+
+            var card = cards[cardIndex];
+            if (card.GetType() != typeof(Card))
+                return (int)AtmStates.CardNotInitialised;
+
+            var account = FindAccount(card.AccountNumber, card.BankNumber);
+            if (account == null)
+                return (int)AtmStates.AccountNotFound;
+
+            activeAccount = account;
+            cardInserted = card;
+            return (int)AtmStates.Success;
+        }
+
+        private Account FindAccount(int accountNumber, int bankNumber)
+        {
+            foreach (var t in banks)
             {
-                if (banks[i].bankNumber == bankNumber)
+                if (t.BankNumber == bankNumber)
                 {
-                    return banks[i].GetAccount(accountNumber);
+                    return t.GetAccount(accountNumber);
                 }
             }
+
             return null;
         }
 
         public int CheckBalance()
         {
             if (activeAccount == null)
-                return -1;
+                return (int)AtmStates.NoActiveAccount;
             return activeAccount.balance;
         }
 
-        public bool InsertCard()
+        public int CheckPin(int pin)
         {
-            return false;
+            if (activeAccount == null)
+                return (int)AtmStates.NoActiveAccount;
+            if (activeAccount.CheckPin(pin))
+                return (int)AtmStates.Success;
+            return (int)AtmStates.IncorrectPin;
+
         }
 
-        public bool EjectCard()
+
+
+        public int EjectCard()
         {
-            return false;
+            if (cardInserted == null)
+                return (int)AtmStates.CardNotInserted;
+            cardInserted = null;
+            return (int)AtmStates.Success;
         }
 
-        public bool Withdraw(int amount)
+        public int Withdraw(int amount)
         {
-            return true;
+            if (activeAccount == null)
+                return (int)AtmStates.NoActiveAccount;
+            return (int)AtmStates.Success;
         }
     }
 }

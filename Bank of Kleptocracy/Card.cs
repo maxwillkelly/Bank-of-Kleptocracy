@@ -8,30 +8,20 @@ namespace Bank_of_Kleptocracy
 {
     class Card
     {
-        private int accountNumber;
-        private int bankNumber;
+        public int AccountNumber { get; }
+        public int BankNumber { get; }
 
         Card()
         {
             Random rnd = new Random();
-            accountNumber = rnd.Next(9999);
-            bankNumber = rnd.Next(100);
+            AccountNumber = rnd.Next(9999);
+            BankNumber = rnd.Next(100);
         }
 
         Card(int accountNumber, int bankNumber)
         {
-            this.accountNumber = accountNumber;
-            this.bankNumber = bankNumber;
-        }
-
-        int GetAccountNumber()
-        {
-            return accountNumber;
-        }
-
-        int GetBankNumber()
-        {
-            return bankNumber;
+            AccountNumber = accountNumber;
+            BankNumber = bankNumber;
         }
     }
 }
