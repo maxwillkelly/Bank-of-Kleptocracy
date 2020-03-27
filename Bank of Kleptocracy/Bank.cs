@@ -9,11 +9,11 @@ namespace Bank_of_Kleptocracy
     class Bank
     {
         private Account[] accounts;
-        public int bankNumber { get; }
+        public int BankNumber { get; }
 
-        public Bank()
+        public Bank(int bankNumber)
         {
-
+            BankNumber = bankNumber;
         }
 
         public void InitAccount(int balance, int pin, int accountNumber)
