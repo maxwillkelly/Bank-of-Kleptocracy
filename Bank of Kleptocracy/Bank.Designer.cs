@@ -1,6 +1,6 @@
 ﻿namespace Bank_of_Kleptocracy
 {
-    partial class Control
+    partial class Bank
     {
         /// <summary>
         /// Required designer variable.
@@ -79,7 +79,7 @@
             this.testBtn4.Text = "Test Button 4";
             this.testBtn4.UseVisualStyleBackColor = true;
             // 
-            // Control
+            // Bank_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.testBtn4);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.richTextBox1);
-            this.Name = "Control";
+            this.Name = "Bank_form";
             this.Text = "Kleptocratic Mission Control ";
             this.ResumeLayout(false);
             this.PerformLayout();
