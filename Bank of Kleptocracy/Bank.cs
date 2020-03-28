@@ -34,5 +34,14 @@ namespace Bank_of_Kleptocracy
 
             return null;
         }
+
+        public void Print()
+        {
+            Console.WriteLine("Bank Number: " + BankNumber);
+            foreach (var account in accounts)
+            {
+                account.Print();
+            }
+        }
     }
 }
