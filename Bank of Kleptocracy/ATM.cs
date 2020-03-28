@@ -30,21 +30,27 @@ namespace Bank_of_Kleptocracy
         private Card[] cards;
         private Account activeAccount;
         private Card cardInserted;
+        private Random rnd;
 
         public ATM()
         {
             InitializeComponent();
+            rnd = new Random();
             InitBanks();
             InitCards();
         }
-        public void InitBanks()
+        private void InitBanks()
         {
             banks = new Bank[10];
         }
 
-        public void InitCards()
+        private void InitCards()
         {
             cards = new Card[10];
+            for (var index = 0; index < cards.Length; index++)
+            {
+                cards[index] = new Card(rnd);
+            }
         }
 
         public int InsertCard(int cardIndex)
@@ -65,24 +71,11 @@ namespace Bank_of_Kleptocracy
             return (int)AtmStates.Success;
         }
 
-        private Account FindAccount(int accountNumber, int bankNumber)
-        {
-            foreach (var t in banks)
-            {
-                if (t.BankNumber == bankNumber)
-                {
-                    return t.GetAccount(accountNumber);
-                }
-            }
-
-            return null;
-        }
-
         public int CheckBalance()
         {
             if (activeAccount == null)
                 return (int)AtmStates.NoActiveAccount;
-            return activeAccount.balance;
+            return activeAccount.Balance;
         }
 
         public int CheckPin(int pin)
@@ -94,8 +87,6 @@ namespace Bank_of_Kleptocracy
             return (int)AtmStates.IncorrectPin;
 
         }
-
-
 
         public int EjectCard()
         {
@@ -110,6 +101,40 @@ namespace Bank_of_Kleptocracy
             if (activeAccount == null)
                 return (int)AtmStates.NoActiveAccount;
             return (int)AtmStates.Success;
+        }
+
+        private Account FindAccount(int accountNumber, int bankNumber)
+        {
+            foreach (var bank in banks)
+            {
+                if (bank.BankNumber == bankNumber)
+                {
+                    return bank.GetAccount(accountNumber);
+                }
+            }
+
+            return null;
+        }
+
+        private void PrintCards()
+        {
+            for (int cardIndex = 0; cardIndex < cards.Length; cardIndex++)
+            {
+                var card = cards[cardIndex];
+                Console.Write("Card Index:" + cardIndex + "\t");
+                card.Print();
+                Console.WriteLine();
+            }
+        }
+
+        private void ATM_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void testBtn1_Click(object sender, EventArgs e)
+        {
+            PrintCards();
         }
     }
 }

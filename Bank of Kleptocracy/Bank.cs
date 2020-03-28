@@ -14,23 +14,34 @@ namespace Bank_of_Kleptocracy
         public Bank(int bankNumber)
         {
             BankNumber = bankNumber;
+            InitAccounts();
         }
 
-        public void InitAccount(int balance, int pin, int accountNumber)
+        private void InitAccounts()
         {
-
+            accounts = new Account[10];
         }
 
         public Account GetAccount(int accountNumber)
         {
-            for (int i = 0; i < accounts.Length; i++)
+            foreach (var account in accounts)
             {
-                if (accounts[i].accountNumber == accountNumber)
+                if (account.AccountNumber == accountNumber)
                 {
-                    return accounts[i];
+                    return account;
                 }
             }
+
             return null;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("Bank Number: " + BankNumber);
+            foreach (var account in accounts)
+            {
+                account.Print();
+            }
         }
     }
 }
