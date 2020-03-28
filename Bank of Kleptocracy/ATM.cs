@@ -30,13 +30,7 @@ namespace Bank_of_Kleptocracy
         {
             InitializeComponent();
             rnd = new Random();
-            InitBanks();
             InitCards();
-        }
-
-        private void InitBanks()
-        {
-            bank = new Bank();
         }
 
         private void InitCards()
