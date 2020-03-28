@@ -124,23 +124,39 @@ namespace Bank_of_Kleptocracy
                 case (int) AtmStates.InvalidCardIndex:
                     MessageBox.Show("Invalid Card Index: " + cardNum);
                     break;
-                case (int)AtmStates.CardInserted:
+                case (int) AtmStates.CardInserted:
                     MessageBox.Show("You can't insert multiple cards, eject the current card before proceeding");
                     break;
-                case (int)AtmStates.CardNotInitialised:
+                case (int) AtmStates.CardNotInitialised:
                     MessageBox.Show("Card Initalisation Error");
                     break;
-                case (int)AtmStates.AccountNotFound:
+                case (int) AtmStates.AccountNotFound:
                     MessageBox.Show("Account not found");
+                    break;
+                case (int) AtmStates.Success:
+                    // TODO: Display Account options
+                    Console.WriteLine("Card inserted");
+                    break;
+                default:
+                    MessageBox.Show("Generic Error occurred on card insertion");
                     break;
             }
         }
 
         private void ejectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (EjectCard() == (int) AtmStates.Success)
+            switch (EjectCard())
             {
-                // TODO: Return to insert card screen
+                case (int) AtmStates.CardNotInserted:
+                    MessageBox.Show("No card inserted");
+                    break;
+                case (int) AtmStates.Success:
+                    // TODO: Return to insert card screen
+                    Console.WriteLine("Card ejected");
+                    break;
+                default:
+                    MessageBox.Show("Generic Error occurred on card ejection");
+                    break;
             }
         }
 
