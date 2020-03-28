@@ -28,7 +28,7 @@ namespace Bank_of_Kleptocracy
 
         static void LaunchControl()
         {
-            Application.Run(new Control());
+            Application.Run(new Bank());
         }
 
         static void LaunchATM()
