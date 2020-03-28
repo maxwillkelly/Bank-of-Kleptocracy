@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
@@ -17,6 +10,7 @@ namespace Bank_of_Kleptocracy
         NoCardInserted,
         InvalidCardIndex,
         IncorrectPin,
+        CardInserted,
         CardNotInitialised,
         CardNotInserted,
         AccountNotFound
@@ -24,13 +18,13 @@ namespace Bank_of_Kleptocracy
 
     public partial class ATM : Form
     {
-        const string branchName = "Bank of Kleptocracy";
-
-        private Bank[] banks;
-        private Card[] cards;
+        private const string branchName = "Bank of Kleptocracy";
         private Account activeAccount;
+
+        private Bank bank;
         private Card cardInserted;
-        private Random rnd;
+        private Card[] cards;
+        private readonly Random rnd;
 
         public ATM()
         {
@@ -39,86 +33,78 @@ namespace Bank_of_Kleptocracy
             InitBanks();
             InitCards();
         }
+
         private void InitBanks()
         {
-            banks = new Bank[10];
+            bank = new Bank();
         }
 
         private void InitCards()
         {
-            cards = new Card[10];
-            for (var index = 0; index < cards.Length; index++)
-            {
-                cards[index] = new Card(rnd);
-            }
+            cards = new Card[3];
+            for (var index = 0; index < cards.Length; index++) cards[index] = new Card(rnd);
         }
 
+        // Main functionality
         public int InsertCard(int cardIndex)
         {
             if (cardIndex >= cards.Length)
-                return (int)AtmStates.InvalidCardIndex;
+                return (int) AtmStates.InvalidCardIndex;
+            if (cardInserted != null)
+                return (int) AtmStates.CardInserted;
 
             var card = cards[cardIndex];
             if (card.GetType() != typeof(Card))
-                return (int)AtmStates.CardNotInitialised;
+                return (int) AtmStates.CardNotInitialised;
 
             var account = FindAccount(card.AccountNumber, card.BankNumber);
             if (account == null)
-                return (int)AtmStates.AccountNotFound;
+                return (int) AtmStates.AccountNotFound;
 
             activeAccount = account;
             cardInserted = card;
-            return (int)AtmStates.Success;
+            return (int) AtmStates.Success;
         }
 
         public int CheckBalance()
         {
             if (activeAccount == null)
-                return (int)AtmStates.NoActiveAccount;
+                return (int) AtmStates.NoActiveAccount;
             return activeAccount.Balance;
         }
 
         public int CheckPin(int pin)
         {
             if (activeAccount == null)
-                return (int)AtmStates.NoActiveAccount;
+                return (int) AtmStates.NoActiveAccount;
             if (activeAccount.CheckPin(pin))
-                return (int)AtmStates.Success;
-            return (int)AtmStates.IncorrectPin;
-
+                return (int) AtmStates.Success;
+            return (int) AtmStates.IncorrectPin;
         }
 
         public int EjectCard()
         {
             if (cardInserted == null)
-                return (int)AtmStates.CardNotInserted;
+                return (int) AtmStates.CardNotInserted;
             cardInserted = null;
-            return (int)AtmStates.Success;
+            return (int) AtmStates.Success;
         }
 
         public int Withdraw(int amount)
         {
             if (activeAccount == null)
-                return (int)AtmStates.NoActiveAccount;
-            return (int)AtmStates.Success;
+                return (int) AtmStates.NoActiveAccount;
+            return (int) AtmStates.Success;
         }
 
         private Account FindAccount(int accountNumber, int bankNumber)
         {
-            foreach (var bank in banks)
-            {
-                if (bank.BankNumber == bankNumber)
-                {
-                    return bank.GetAccount(accountNumber);
-                }
-            }
-
-            return null;
+            return bank.BankNumber == bankNumber ? bank.GetAccount(accountNumber) : null;
         }
 
         private void PrintCards()
         {
-            for (int cardIndex = 0; cardIndex < cards.Length; cardIndex++)
+            for (var cardIndex = 0; cardIndex < cards.Length; cardIndex++)
             {
                 var card = cards[cardIndex];
                 Console.Write("Card Index:" + cardIndex + "\t");
@@ -127,19 +113,47 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        private void ATM_Load(object sender, EventArgs e)
+        // User Interface
+        private void insertCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var item = (ToolStripMenuItem) sender;
+            // Determines which card is being inserted
+            var cardNum = item.Name[10] - '0' - 1;
+            switch (InsertCard(cardNum))
+            {
+                case (int) AtmStates.InvalidCardIndex:
+                    MessageBox.Show("Invalid Card Index: " + cardNum);
+                    break;
+                case (int)AtmStates.CardInserted:
+                    MessageBox.Show("You can't insert multiple cards, eject the current card before proceeding");
+                    break;
+                case (int)AtmStates.CardNotInitialised:
+                    MessageBox.Show("Card Initalisation Error");
+                    break;
+                case (int)AtmStates.AccountNotFound:
+                    MessageBox.Show("Account not found");
+                    break;
+            }
         }
 
-        private void testBtn1_Click(object sender, EventArgs e)
+        private void ejectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintCards();
+            if (EjectCard() == (int) AtmStates.Success)
+            {
+                // TODO: Return to insert card screen
+            }
         }
 
-        private void testBtn2_Click(object sender, EventArgs e)
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // TODO: Help Dialog
+            Console.WriteLine("Display Help");
+        }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: About Dialog
+            Console.WriteLine("Display About");
         }
     }
 }
