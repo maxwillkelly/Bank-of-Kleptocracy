@@ -47,13 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="Bank.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="Control.cs">
+    <Compile Include="Bank.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Control.Designer.cs">
-      <DependentUpon>Control.cs</DependentUpon>
+    <Compile Include="Bank.Designer.cs">
+      <DependentUpon>Bank.cs</DependentUpon>
     </Compile>
     <Compile Include="ATM.cs">
       <SubType>Form</SubType>
@@ -61,13 +60,22 @@
     <Compile Include="ATM.Designer.cs">
       <DependentUpon>ATM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Launch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Launch.Designer.cs">
+      <DependentUpon>Launch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ATM.resx">
       <DependentUpon>ATM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control.resx">
-      <DependentUpon>Control.cs</DependentUpon>
+    <EmbeddedResource Include="Bank.resx">
+      <DependentUpon>Bank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Launch.resx">
+      <DependentUpon>Launch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +85,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pexels-photo-912110.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pexels-photo-912110.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

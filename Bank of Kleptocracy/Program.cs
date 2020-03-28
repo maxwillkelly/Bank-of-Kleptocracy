@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +15,10 @@ namespace Bank_of_Kleptocracy
         [STAThread]
         static void Main()
         {
+            // Generic Application Code
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Control());
+            Application.Run(new Launch());
         }
     }
 }

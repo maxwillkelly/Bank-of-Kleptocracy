@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,30 +9,24 @@ namespace Bank_of_Kleptocracy
 {
     class Card
     {
-        private int accountNumber;
-        private int bankNumber;
+        public int AccountNumber { get; }
+        public int BankNumber { get; }
 
-        Card()
+        public Card(Random rnd)
         {
-            Random rnd = new Random();
-            accountNumber = rnd.Next(9999);
-            bankNumber = rnd.Next(100);
+            AccountNumber = rnd.Next(111,9999);
+            BankNumber = rnd.Next(100);
         }
 
-        Card(int accountNumber, int bankNumber)
+        public Card(int accountNumber, int bankNumber)
         {
-            this.accountNumber = accountNumber;
-            this.bankNumber = bankNumber;
+            AccountNumber = accountNumber;
+            BankNumber = bankNumber;
         }
 
-        int GetAccountNumber()
+        public void Print()
         {
-            return accountNumber;
-        }
-
-        int GetBankNumber()
-        {
-            return bankNumber;
+            Console.Write("Bank Number: " + BankNumber + "\t" + "Account Number: " + AccountNumber);
         }
     }
 }
