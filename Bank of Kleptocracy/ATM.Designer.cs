@@ -46,14 +46,15 @@
             this.title.BackColor = System.Drawing.Color.Transparent;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(264, 73);
+            this.title.Location = new System.Drawing.Point(282, 96);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(451, 55);
+            this.title.Size = new System.Drawing.Size(538, 65);
             this.title.TabIndex = 1;
             this.title.Text = "Bank of Kleptocracy";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
@@ -61,14 +62,15 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(942, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1060, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -80,55 +82,56 @@
             this.insertCard3ToolStripMenuItem,
             this.ejectToolStripMenuItem});
             this.cardsToolStripMenuItem.Name = "cardsToolStripMenuItem";
-            this.cardsToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
+            this.cardsToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
             this.cardsToolStripMenuItem.Text = "Cards";
             // 
             // insertCard1ToolStripMenuItem
             // 
             this.insertCard1ToolStripMenuItem.Name = "insertCard1ToolStripMenuItem";
-            this.insertCard1ToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.insertCard1ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.insertCard1ToolStripMenuItem.Text = "Insert Card 1";
             this.insertCard1ToolStripMenuItem.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // insertCard2ToolStripMenuItem
             // 
             this.insertCard2ToolStripMenuItem.Name = "insertCard2ToolStripMenuItem";
-            this.insertCard2ToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.insertCard2ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.insertCard2ToolStripMenuItem.Text = "Insert Card 2";
             this.insertCard2ToolStripMenuItem.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // insertCard3ToolStripMenuItem
             // 
             this.insertCard3ToolStripMenuItem.Name = "insertCard3ToolStripMenuItem";
-            this.insertCard3ToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.insertCard3ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.insertCard3ToolStripMenuItem.Text = "Insert Card 3";
             this.insertCard3ToolStripMenuItem.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // ejectToolStripMenuItem
             // 
             this.ejectToolStripMenuItem.Name = "ejectToolStripMenuItem";
-            this.ejectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.ejectToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
             this.ejectToolStripMenuItem.Text = "Eject";
             this.ejectToolStripMenuItem.Click += new System.EventHandler(this.ejectToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // ATM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::Bank_of_Kleptocracy.Properties.Resources.sky;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(942, 673);
+            this.ClientSize = new System.Drawing.Size(1060, 841);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.title);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ATM";
             this.Text = "ATM";
             this.menuStrip1.ResumeLayout(false);
