@@ -64,6 +64,7 @@
             this.testBtn2.TabIndex = 2;
             this.testBtn2.Text = "Test Button 2";
             this.testBtn2.UseVisualStyleBackColor = true;
+            this.testBtn2.Click += new System.EventHandler(this.testBtn2_Click);
             // 
             // testBtn3
             // 

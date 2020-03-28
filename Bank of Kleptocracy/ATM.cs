@@ -136,5 +136,10 @@ namespace Bank_of_Kleptocracy
         {
             PrintCards();
         }
+
+        private void testBtn2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

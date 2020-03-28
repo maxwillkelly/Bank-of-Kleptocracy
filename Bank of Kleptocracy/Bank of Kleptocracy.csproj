@@ -60,6 +60,12 @@
     <Compile Include="ATM.Designer.cs">
       <DependentUpon>ATM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Launch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Launch.Designer.cs">
+      <DependentUpon>Launch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ATM.resx">
@@ -67,6 +73,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bank.resx">
       <DependentUpon>Bank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Launch.resx">
+      <DependentUpon>Launch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

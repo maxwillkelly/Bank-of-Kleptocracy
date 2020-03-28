@@ -18,22 +18,7 @@ namespace Bank_of_Kleptocracy
             // Generic Application Code
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            // Creates and starts each thread
-            Thread controlThread = new Thread(new ThreadStart(LaunchControl));
-            controlThread.Start();
-            Thread atmThread = new Thread(new ThreadStart(LaunchATM));
-            atmThread.Start();
-        }
-
-        static void LaunchControl()
-        {
-            Application.Run(new Bank());
-        }
-
-        static void LaunchATM()
-        {
-            Application.Run(new ATM());
+            Application.Run(new Launch());
         }
     }
 }
