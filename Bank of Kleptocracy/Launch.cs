@@ -14,6 +14,7 @@ namespace Bank_of_Kleptocracy
     public partial class Launch : Form
     {
         private int numAtms = 1;
+        private Bank bank;
         public Launch()
         {
             InitializeComponent();
@@ -28,8 +29,8 @@ namespace Bank_of_Kleptocracy
         {
             Hide();
             // Creates and starts each thread
-            Thread controlThread = new Thread(new ThreadStart(LaunchControl));
-            controlThread.Start();
+            Thread bankThread = new Thread(new ThreadStart(LaunchBank));
+            bankThread.Start();
             // Starts each ATM
             for (int i = 0; i < numAtms; i++)
             {
@@ -38,14 +39,15 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        private void LaunchControl()
+        private void LaunchBank()
         {
-            Application.Run(new Bank());
+            bank = new Bank();
+            Application.Run(bank);
         }
 
         private void LaunchATM()
         {
-            Application.Run(new ATM());
+            Application.Run(new ATM(ref bank));
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
