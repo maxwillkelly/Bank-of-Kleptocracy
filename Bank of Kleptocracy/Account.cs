@@ -10,7 +10,7 @@ namespace Bank_of_Kleptocracy
     {
         public int AccountNumber { get; }
         public int Pin { get; }
-        public int Balance { get; }
+        public int Balance { get; set; }
 
         public Account(Random rnd)
         {
