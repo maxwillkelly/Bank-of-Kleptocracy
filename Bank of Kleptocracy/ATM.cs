@@ -19,16 +19,16 @@ namespace Bank_of_Kleptocracy
     public partial class ATM : Form
     {
         private const string branchName = "Bank of Kleptocracy";
-        private Account activeAccount;
-
         private Bank bank;
         private Card cardInserted;
         private Card[] cards;
         private readonly Random rnd;
+        private string pin;
 
-        public ATM()
+        public ATM(ref Bank bank)
         {
             InitializeComponent();
+            this.bank = bank;
             rnd = new Random();
             InitCards();
         }
@@ -51,11 +51,11 @@ namespace Bank_of_Kleptocracy
             if (card.GetType() != typeof(Card))
                 return (int) AtmStates.CardNotInitialised;
 
-            var account = FindAccount(card.AccountNumber, card.BankNumber);
+            /*var account = FindAccount(card.AccountNumber, card.BankNumber);
             if (account == null)
                 return (int) AtmStates.AccountNotFound;
 
-            activeAccount = account;
+            activeAccount = account;*/
             cardInserted = card;
             return (int) AtmStates.Success;
         }
@@ -67,7 +67,7 @@ namespace Bank_of_Kleptocracy
             return activeAccount.Balance;
         }
 
-        public int CheckPin(int pin)
+        public int CheckPin(string pin)
         {
             if (activeAccount == null)
                 return (int) AtmStates.NoActiveAccount;
@@ -91,10 +91,12 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
-        private Account FindAccount(int accountNumber, int bankNumber)
+        /*private Account FindAccount(int accountNumber, int bankNumber)
         {
-            return bank.BankNumber == bankNumber ? bank.GetAccount(accountNumber) : null;
-        }
+            if (bank.BankNumber == bankNumber)
+                return bank.GetAccount(accountNumber);
+            return null;
+        }*/
 
         private void PrintCards()
         {
@@ -128,7 +130,7 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("Account not found");
                     break;
                 case (int) AtmStates.Success:
-                    // TODO: Display Account options
+                    // TODO: Check pin
                     Console.WriteLine("Card inserted");
                     break;
                 default:
