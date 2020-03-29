@@ -11,8 +11,6 @@ using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
 {
-
-
     public partial class Bank : Form
     {
         /*
@@ -30,7 +28,7 @@ namespace Bank_of_Kleptocracy
 
         //* threads control
 
-		bool isSemaphored;
+        bool isSemaphored;
         private Semaphore sem;
 
         //* vars
@@ -41,11 +39,11 @@ namespace Bank_of_Kleptocracy
         public Bank(bool IsSemaphored)
         {
             InitializeComponent();
-			this.isSemaphored = IsSemaphored;
-			if(isSemaphored)
-			{
+            this.isSemaphored = IsSemaphored;
+            if (isSemaphored)
+            {
                 new Semaphore(0, 1);
-			}
+            }
         }
 
         //* Initialize a number of accounts with random data
@@ -212,6 +210,35 @@ namespace Bank_of_Kleptocracy
                     return -2; //* account found, but invalid pin
                 }
             }
+            finally
+            {
+                if (isSemaphored)
+                    sem.Release();
+            }
+        }
+
+        //* add a bank account 													<--- NEEDS ERROR CHECKING
+        public int addAccount(int accountNumber, string pin, int balance = 0)
+        {
+            try
+            {
+                if (isSemaphored)
+                    sem.WaitOne();
+
+                Account[] tempAccounts = new Account[accounts.Length + 1];
+                for (int i = 0; i < accounts.Length; i++)
+                {
+                    tempAccounts[i] = accounts[i];
+                }
+				tempAccounts[accounts.Length] = new Account(accountNumber, pin, balance);
+				
+				return 0;
+            }
+			catch(IndexOutOfRangeException e)
+			{
+				Console.WriteLine("Index out of bounds in addAccount(). Likely an inconsistency in data. {0}", e);
+				return -3; //* array out of bounds
+			}
             finally
             {
                 if (isSemaphored)
