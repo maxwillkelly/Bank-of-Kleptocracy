@@ -62,18 +62,31 @@ namespace Bank_of_Kleptocracy
 
         public int CheckBalance()
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
-            return activeAccount.Balance;
+            var balance = bank.balanceCheck(cardInserted.AccountNumber, pin);
+            switch (balance)
+            {
+                case -1:
+                    return (int)AtmStates.AccountNotFound;
+                case -2:
+                    return (int)AtmStates.IncorrectPin;
+            }
+            return balance;
         }
 
         public int CheckPin(string pin)
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
-            if (activeAccount.CheckPin(pin))
-                return (int) AtmStates.Success;
-            return (int) AtmStates.IncorrectPin;
+            if (cardInserted == null)
+                return (int) AtmStates.CardNotInserted;
+            this.pin = pin;
+            var accountIndex = bank.checkPin(cardInserted.AccountNumber, pin);
+            switch (accountIndex)
+            {
+                case -1:
+                    return (int) AtmStates.AccountNotFound;
+                case -2:
+                    return (int) AtmStates.IncorrectPin;
+            }
+            return (int) AtmStates.Success;
         }
 
         public int EjectCard()
@@ -86,8 +99,16 @@ namespace Bank_of_Kleptocracy
 
         public int Withdraw(int amount)
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
+            if (cardInserted == null)
+                return (int) AtmStates.CardNotInserted;
+            var withdraw = bank.balanceWithdraw(cardInserted.AccountNumber, pin, amount);
+            switch (withdraw)
+            {
+                case -1:
+                    return (int) AtmStates.AccountNotFound;
+                case -2:
+                    return (int) AtmStates.IncorrectPin;
+            }
             return (int) AtmStates.Success;
         }
 
