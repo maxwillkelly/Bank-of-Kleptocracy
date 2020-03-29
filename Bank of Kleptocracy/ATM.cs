@@ -19,16 +19,16 @@ namespace Bank_of_Kleptocracy
     public partial class ATM : Form
     {
         private const string branchName = "Bank of Kleptocracy";
-        private Account activeAccount;
-
         private Bank bank;
         private Card cardInserted;
         private Card[] cards;
         private readonly Random rnd;
+        private string pin;
 
-        public ATM()
+        public ATM(ref Bank bank)
         {
             InitializeComponent();
+            this.bank = bank;
             rnd = new Random();
             InitCards();
         }
@@ -51,29 +51,42 @@ namespace Bank_of_Kleptocracy
             if (card.GetType() != typeof(Card))
                 return (int) AtmStates.CardNotInitialised;
 
-            var account = FindAccount(card.AccountNumber, card.BankNumber);
+            /*var account = FindAccount(card.AccountNumber, card.BankNumber);
             if (account == null)
                 return (int) AtmStates.AccountNotFound;
 
-            activeAccount = account;
+            activeAccount = account;*/
             cardInserted = card;
             return (int) AtmStates.Success;
         }
 
         public int CheckBalance()
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
-            return activeAccount.Balance;
+            var balance = bank.balanceCheck(cardInserted.AccountNumber, pin);
+            switch (balance)
+            {
+                case -1:
+                    return (int)AtmStates.AccountNotFound;
+                case -2:
+                    return (int)AtmStates.IncorrectPin;
+            }
+            return balance;
         }
 
-        public int CheckPin(int pin)
+        public int CheckPin(string pin)
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
-            if (activeAccount.CheckPin(pin))
-                return (int) AtmStates.Success;
-            return (int) AtmStates.IncorrectPin;
+            if (cardInserted == null)
+                return (int) AtmStates.CardNotInserted;
+            this.pin = pin;
+            var accountIndex = bank.checkPin(cardInserted.AccountNumber, pin);
+            switch (accountIndex)
+            {
+                case -1:
+                    return (int) AtmStates.AccountNotFound;
+                case -2:
+                    return (int) AtmStates.IncorrectPin;
+            }
+            return (int) AtmStates.Success;
         }
 
         public int EjectCard()
@@ -86,15 +99,25 @@ namespace Bank_of_Kleptocracy
 
         public int Withdraw(int amount)
         {
-            if (activeAccount == null)
-                return (int) AtmStates.NoActiveAccount;
+            if (cardInserted == null)
+                return (int) AtmStates.CardNotInserted;
+            var withdraw = bank.balanceWithdraw(cardInserted.AccountNumber, pin, amount);
+            switch (withdraw)
+            {
+                case -1:
+                    return (int) AtmStates.AccountNotFound;
+                case -2:
+                    return (int) AtmStates.IncorrectPin;
+            }
             return (int) AtmStates.Success;
         }
 
-        private Account FindAccount(int accountNumber, int bankNumber)
+        /*private Account FindAccount(int accountNumber, int bankNumber)
         {
-            return bank.BankNumber == bankNumber ? bank.GetAccount(accountNumber) : null;
-        }
+            if (bank.BankNumber == bankNumber)
+                return bank.GetAccount(accountNumber);
+            return null;
+        }*/
 
         private void PrintCards()
         {
@@ -128,7 +151,7 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("Account not found");
                     break;
                 case (int) AtmStates.Success:
-                    // TODO: Display Account options
+                    // TODO: Check pin
                     Console.WriteLine("Card inserted");
                     break;
                 default:
