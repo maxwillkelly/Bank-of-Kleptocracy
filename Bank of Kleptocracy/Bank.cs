@@ -39,7 +39,7 @@ namespace Bank_of_Kleptocracy
 		public Bank()
 		{
 			InitializeComponent();
-		}
+        }
 
 		//* Initialize a number of accounts with random data
 		public void InitAccounts(int n)
@@ -81,7 +81,7 @@ namespace Bank_of_Kleptocracy
 		}
 		
 		//* check if account with passed account number exists
-		public int checkPin(int accNum, int pin)
+		public int checkPin(int accNum, string pin)
 		{
 			try
 			{
@@ -110,7 +110,7 @@ namespace Bank_of_Kleptocracy
 		}
 
 		//* check account's balance
-		public int balanceCheck(int accNum, int pin)
+		public int balanceCheck(int accNum, string pin)
 		{
 			try
 			{
@@ -137,7 +137,7 @@ namespace Bank_of_Kleptocracy
 		}
 
 		//* withdraw from account's balance
-		public int balanceWithdraw(int accNum, int pin, int amount)
+		public int balanceWithdraw(int accNum, string pin, int amount)
 		{
 			try
 			{
@@ -169,7 +169,7 @@ namespace Bank_of_Kleptocracy
 		}
 
 		//* deposit into account's balance
-		public int balanceDeposit(int accNum, int pin, int amount)
+		public int balanceDeposit(int accNum, string pin, int amount)
 		{
 			try
 			{
