@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.title = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.cardsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.insertCard1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +39,7 @@
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.selectorTopLeft = new System.Windows.Forms.Button();
             this.selectorBottomLeft = new System.Windows.Forms.Button();
             this.selectorMiddleLeft = new System.Windows.Forms.Button();
@@ -62,8 +62,8 @@
             this.keypadDummy2 = new System.Windows.Forms.Button();
             this.keypadDummy1 = new System.Windows.Forms.Button();
             this.keypadDummy3 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // title
@@ -78,16 +78,16 @@
             this.title.TabIndex = 1;
             this.title.Text = "Bank of Kleptocracy";
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStrip});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(942, 28);
+            this.menuStrip.TabIndex = 4;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // menuToolStrip
             // 
@@ -108,67 +108,67 @@
             this.insertCard3ToolStripMenuItem1,
             this.ejectCardToolStripMenuItem});
             this.cardsToolStripMenuItem1.Name = "cardsToolStripMenuItem1";
-            this.cardsToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.cardsToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.cardsToolStripMenuItem1.Text = "Cards";
             // 
             // insertCard1ToolStripMenuItem1
             // 
             this.insertCard1ToolStripMenuItem1.Name = "insertCard1ToolStripMenuItem1";
-            this.insertCard1ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.insertCard1ToolStripMenuItem1.Size = new System.Drawing.Size(175, 26);
             this.insertCard1ToolStripMenuItem1.Text = "Insert Card 1";
             this.insertCard1ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // insertCard2ToolStripMenuItem1
             // 
             this.insertCard2ToolStripMenuItem1.Name = "insertCard2ToolStripMenuItem1";
-            this.insertCard2ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.insertCard2ToolStripMenuItem1.Size = new System.Drawing.Size(175, 26);
             this.insertCard2ToolStripMenuItem1.Text = "Insert Card 2";
             this.insertCard2ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // insertCard3ToolStripMenuItem1
             // 
             this.insertCard3ToolStripMenuItem1.Name = "insertCard3ToolStripMenuItem1";
-            this.insertCard3ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.insertCard3ToolStripMenuItem1.Size = new System.Drawing.Size(175, 26);
             this.insertCard3ToolStripMenuItem1.Text = "Insert Card 3";
             this.insertCard3ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // ejectCardToolStripMenuItem
             // 
             this.ejectCardToolStripMenuItem.Name = "ejectCardToolStripMenuItem";
-            this.ejectCardToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ejectCardToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.ejectCardToolStripMenuItem.Text = "Eject Card";
             this.ejectCardToolStripMenuItem.Click += new System.EventHandler(this.ejectToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox1.Location = new System.Drawing.Point(271, 62);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(420, 220);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pictureBox.Location = new System.Drawing.Point(271, 62);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(420, 220);
+            this.pictureBox.TabIndex = 5;
+            this.pictureBox.TabStop = false;
             // 
             // selectorTopLeft
             // 
@@ -179,6 +179,7 @@
             this.selectorTopLeft.TabIndex = 6;
             this.selectorTopLeft.Text = ">";
             this.selectorTopLeft.UseVisualStyleBackColor = true;
+            this.selectorTopLeft.Click += new System.EventHandler(this.selector_Click);
             // 
             // selectorBottomLeft
             // 
@@ -189,6 +190,7 @@
             this.selectorBottomLeft.TabIndex = 7;
             this.selectorBottomLeft.Text = ">";
             this.selectorBottomLeft.UseVisualStyleBackColor = true;
+            this.selectorBottomLeft.Click += new System.EventHandler(this.selector_Click);
             // 
             // selectorMiddleLeft
             // 
@@ -199,6 +201,7 @@
             this.selectorMiddleLeft.TabIndex = 8;
             this.selectorMiddleLeft.Text = ">";
             this.selectorMiddleLeft.UseVisualStyleBackColor = true;
+            this.selectorMiddleLeft.Click += new System.EventHandler(this.selector_Click);
             // 
             // selectorBottomRight
             // 
@@ -209,6 +212,7 @@
             this.selectorBottomRight.TabIndex = 9;
             this.selectorBottomRight.Text = "<";
             this.selectorBottomRight.UseVisualStyleBackColor = true;
+            this.selectorBottomRight.Click += new System.EventHandler(this.selector_Click);
             // 
             // selectorMiddleRight
             // 
@@ -219,6 +223,7 @@
             this.selectorMiddleRight.TabIndex = 10;
             this.selectorMiddleRight.Text = "<";
             this.selectorMiddleRight.UseVisualStyleBackColor = true;
+            this.selectorMiddleRight.Click += new System.EventHandler(this.selector_Click);
             // 
             // selectorTopRight
             // 
@@ -229,6 +234,7 @@
             this.selectorTopRight.TabIndex = 11;
             this.selectorTopRight.Text = "<";
             this.selectorTopRight.UseVisualStyleBackColor = true;
+            this.selectorTopRight.Click += new System.EventHandler(this.selector_Click);
             // 
             // keypad1
             // 
@@ -239,6 +245,7 @@
             this.keypad1.TabIndex = 12;
             this.keypad1.Text = "1";
             this.keypad1.UseVisualStyleBackColor = true;
+            this.keypad1.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad2
             // 
@@ -249,6 +256,7 @@
             this.keypad2.TabIndex = 13;
             this.keypad2.Text = "2";
             this.keypad2.UseVisualStyleBackColor = true;
+            this.keypad2.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad3
             // 
@@ -259,6 +267,7 @@
             this.keypad3.TabIndex = 14;
             this.keypad3.Text = "3";
             this.keypad3.UseVisualStyleBackColor = true;
+            this.keypad3.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypadCancel
             // 
@@ -270,6 +279,7 @@
             this.keypadCancel.TabIndex = 15;
             this.keypadCancel.Text = "CANCEL";
             this.keypadCancel.UseVisualStyleBackColor = false;
+            this.keypadCancel.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad4
             // 
@@ -280,6 +290,7 @@
             this.keypad4.TabIndex = 16;
             this.keypad4.Text = "4";
             this.keypad4.UseVisualStyleBackColor = true;
+            this.keypad4.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypadClear
             // 
@@ -291,6 +302,7 @@
             this.keypadClear.TabIndex = 17;
             this.keypadClear.Text = "CLEAR";
             this.keypadClear.UseVisualStyleBackColor = false;
+            this.keypadClear.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad6
             // 
@@ -301,6 +313,7 @@
             this.keypad6.TabIndex = 18;
             this.keypad6.Text = "6";
             this.keypad6.UseVisualStyleBackColor = true;
+            this.keypad6.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad5
             // 
@@ -311,6 +324,7 @@
             this.keypad5.TabIndex = 19;
             this.keypad5.Text = "5";
             this.keypad5.UseVisualStyleBackColor = true;
+            this.keypad5.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad0
             // 
@@ -321,6 +335,7 @@
             this.keypad0.TabIndex = 20;
             this.keypad0.Text = "0";
             this.keypad0.UseVisualStyleBackColor = true;
+            this.keypad0.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad9
             // 
@@ -331,6 +346,7 @@
             this.keypad9.TabIndex = 21;
             this.keypad9.Text = "9";
             this.keypad9.UseVisualStyleBackColor = true;
+            this.keypad9.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad8
             // 
@@ -341,6 +357,7 @@
             this.keypad8.TabIndex = 22;
             this.keypad8.Text = "8";
             this.keypad8.UseVisualStyleBackColor = true;
+            this.keypad8.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypad7
             // 
@@ -351,6 +368,7 @@
             this.keypad7.TabIndex = 23;
             this.keypad7.Text = "7";
             this.keypad7.UseVisualStyleBackColor = true;
+            this.keypad7.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypadEnter
             // 
@@ -362,6 +380,7 @@
             this.keypadEnter.TabIndex = 24;
             this.keypadEnter.Text = "ENTER";
             this.keypadEnter.UseVisualStyleBackColor = false;
+            this.keypadEnter.Click += new System.EventHandler(this.keypad_Click);
             // 
             // keypadDummy2
             // 
@@ -419,15 +438,15 @@
             this.Controls.Add(this.selectorMiddleLeft);
             this.Controls.Add(this.selectorBottomLeft);
             this.Controls.Add(this.selectorTopLeft);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.title);
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "ATM";
             this.Text = "ATM";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,9 +454,9 @@
 
         #endregion
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuToolStrip;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button selectorTopLeft;
         private System.Windows.Forms.Button selectorBottomLeft;
         private System.Windows.Forms.Button selectorMiddleLeft;
