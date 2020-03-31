@@ -37,10 +37,15 @@ namespace Bank_of_Kleptocracy
         public ATM(ref Bank bank)
         {
             InitializeComponent();
+            // Sets up default background
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
+            // Allows for transparency of labels
+            lblCentre.Parent = pictureBox;
+            lblTitle.Parent = pictureBox;
+            // Initialises variables
             this.bank = bank;
             rnd = new Random();
             InitCards();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
         }
 
         private void InitCards()
@@ -166,8 +171,14 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("Account not found");
                     break;
                 case (int) AtmStates.Success:
-                    // TODO: Check pin
                     Console.WriteLine("Card inserted");
+                    operation = (int) AtmOperations.InputPin;
+                    pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+                    lblCentre.Text = "";
+                    lblTitle.Text = "Please enter your pin";
+                    lblCentre.Visible = true;
+                    lblTitle.Visible = true;
+
                     break;
                 default:
                     MessageBox.Show("Generic Error occurred on card insertion");
@@ -185,6 +196,7 @@ namespace Bank_of_Kleptocracy
                 case (int) AtmStates.Success:
                     // TODO: Return to insert card screen
                     Console.WriteLine("Card ejected");
+                    pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
                     break;
                 default:
                     MessageBox.Show("Generic Error occurred on card ejection");
@@ -225,8 +237,20 @@ namespace Bank_of_Kleptocracy
         {
             var keyButton = (Button) sender;
             // Checks if button is a number
-            if (int.TryParse(keyButton.Text, out _)) 
-                amountText += keyButton.Text;
+            if (int.TryParse(keyButton.Text, out _)) { 
+                switch (operation)
+                {
+                    case (int) AtmOperations.InputPin:
+                        pin += keyButton.Text;
+                        lblCentre.Text += '*'; 
+                        break;
+                    case (int) AtmOperations.InputWithdraw:
+                        break;
+                    default:
+                        Console.WriteLine("Error: Keypad Input Invalid Operation as Integer");
+                        break;
+                }
+            }
             else
             {
                 switch (keyButton.Text)
@@ -261,7 +285,7 @@ namespace Bank_of_Kleptocracy
                     CheckPin(amountText);
                     amountText = "";
                     break;
-                case (int)AtmOperations.InputWithdraw:
+                case (int) AtmOperations.InputWithdraw:
                     var amount = int.Parse(amountText);
                     Withdraw(amount);
                     break;
@@ -273,10 +297,10 @@ namespace Bank_of_Kleptocracy
             }       
         }
 
-        private void pictureBox_Click(object sender, EventArgs e)
+        /* private void pictureBox_Click(object sender, EventArgs e)
         {
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
-        }
+        }*/
     }
 }
