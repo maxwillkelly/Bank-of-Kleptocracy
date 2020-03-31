@@ -177,7 +177,7 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: Help Dialog
             Console.WriteLine("Display Help");
@@ -187,20 +187,15 @@ namespace Bank_of_Kleptocracy
         {
             // TODO: About Dialog
             Console.WriteLine("Display About");
-        }
+        }*/
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult popup;
             popup = MessageBox.Show("ATM Simulator \n\nCreated and programmed by:\n\nMax Kelly \nTadas Saltenis \nMax Fyall \n\nThank you", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult popup;
             popup = MessageBox.Show("PLACEHOLDER, PUT HELPFUL TEXT HERE FOR HOW TO USE THE ATM", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
