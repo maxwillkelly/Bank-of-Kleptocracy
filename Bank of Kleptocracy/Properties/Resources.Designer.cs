@@ -63,6 +63,16 @@ namespace Bank_of_Kleptocracy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap atm_startup {
+            get {
+                object obj = ResourceManager.GetObject("atm_startup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sky {
             get {
                 object obj = ResourceManager.GetObject("sky", resourceCulture);

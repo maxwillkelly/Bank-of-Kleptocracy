@@ -40,6 +40,7 @@ namespace Bank_of_Kleptocracy
             this.bank = bank;
             rnd = new Random();
             InitCards();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
         }
 
         private void InitCards()
@@ -270,6 +271,12 @@ namespace Bank_of_Kleptocracy
                     Console.WriteLine("Error: Invalid Process Operation");
                     break;
             }       
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
         }
     }
 }

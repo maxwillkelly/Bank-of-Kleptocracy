@@ -51,7 +51,7 @@ namespace Bank_of_Kleptocracy
             Application.Run(new ATM(ref bank));
         }
 
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             DialogResult popup;
             popup = MessageBox.Show("ATM Simulator \n\nCreated and programmed by:\n\nMax Kelly \nTadas Saltenis \nMax Fyall \n\nThank you", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,5 +92,6 @@ namespace Bank_of_Kleptocracy
                 Console.WriteLine("isSemaphored set to true");
             }
         }
+
     }
 }
