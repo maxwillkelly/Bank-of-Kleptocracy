@@ -105,7 +105,7 @@
             this.radioBtnIncorrectBalance.AutoSize = true;
             this.radioBtnIncorrectBalance.Checked = true;
             this.radioBtnIncorrectBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnIncorrectBalance.Location = new System.Drawing.Point(32, 20);
+            this.radioBtnIncorrectBalance.Location = new System.Drawing.Point(70, 20);
             this.radioBtnIncorrectBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioBtnIncorrectBalance.Name = "radioBtnIncorrectBalance";
             this.radioBtnIncorrectBalance.Size = new System.Drawing.Size(296, 24);
@@ -119,7 +119,7 @@
             // 
             this.radioBtnCorrectBalance.AutoSize = true;
             this.radioBtnCorrectBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnCorrectBalance.Location = new System.Drawing.Point(32, 48);
+            this.radioBtnCorrectBalance.Location = new System.Drawing.Point(70, 48);
             this.radioBtnCorrectBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioBtnCorrectBalance.Name = "radioBtnCorrectBalance";
             this.radioBtnCorrectBalance.Size = new System.Drawing.Size(283, 24);
@@ -164,21 +164,20 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -196,9 +195,9 @@
             // 
             this.groupBoxSimType.Controls.Add(this.radioBtnIncorrectBalance);
             this.groupBoxSimType.Controls.Add(this.radioBtnCorrectBalance);
-            this.groupBoxSimType.Location = new System.Drawing.Point(246, 187);
+            this.groupBoxSimType.Location = new System.Drawing.Point(211, 187);
             this.groupBoxSimType.Name = "groupBoxSimType";
-            this.groupBoxSimType.Size = new System.Drawing.Size(343, 82);
+            this.groupBoxSimType.Size = new System.Drawing.Size(420, 82);
             this.groupBoxSimType.TabIndex = 10;
             this.groupBoxSimType.TabStop = false;
             this.groupBoxSimType.Text = "Simulation Type";
