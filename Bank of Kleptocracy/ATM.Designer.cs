@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.title = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.cardsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,19 +66,6 @@
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // title
-            // 
-            this.title.AutoSize = true;
-            this.title.BackColor = System.Drawing.Color.Transparent;
-            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(184, 83);
-            this.title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(357, 44);
-            this.title.TabIndex = 1;
-            this.title.Text = "Bank of Kleptocracy";
             // 
             // menuStrip
             // 
@@ -167,7 +153,7 @@
             // selectorTopLeft
             // 
             this.selectorTopLeft.Location = new System.Drawing.Point(9, 131);
-            this.selectorTopLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorTopLeft.Margin = new System.Windows.Forms.Padding(2);
             this.selectorTopLeft.Name = "selectorTopLeft";
             this.selectorTopLeft.Size = new System.Drawing.Size(50, 30);
             this.selectorTopLeft.TabIndex = 6;
@@ -178,7 +164,7 @@
             // selectorBottomLeft
             // 
             this.selectorBottomLeft.Location = new System.Drawing.Point(9, 251);
-            this.selectorBottomLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorBottomLeft.Margin = new System.Windows.Forms.Padding(2);
             this.selectorBottomLeft.Name = "selectorBottomLeft";
             this.selectorBottomLeft.Size = new System.Drawing.Size(50, 30);
             this.selectorBottomLeft.TabIndex = 7;
@@ -189,7 +175,7 @@
             // selectorMiddleLeft
             // 
             this.selectorMiddleLeft.Location = new System.Drawing.Point(9, 191);
-            this.selectorMiddleLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorMiddleLeft.Margin = new System.Windows.Forms.Padding(2);
             this.selectorMiddleLeft.Name = "selectorMiddleLeft";
             this.selectorMiddleLeft.Size = new System.Drawing.Size(50, 30);
             this.selectorMiddleLeft.TabIndex = 8;
@@ -200,7 +186,7 @@
             // selectorBottomRight
             // 
             this.selectorBottomRight.Location = new System.Drawing.Point(718, 251);
-            this.selectorBottomRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorBottomRight.Margin = new System.Windows.Forms.Padding(2);
             this.selectorBottomRight.Name = "selectorBottomRight";
             this.selectorBottomRight.Size = new System.Drawing.Size(50, 30);
             this.selectorBottomRight.TabIndex = 9;
@@ -211,7 +197,7 @@
             // selectorMiddleRight
             // 
             this.selectorMiddleRight.Location = new System.Drawing.Point(718, 191);
-            this.selectorMiddleRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorMiddleRight.Margin = new System.Windows.Forms.Padding(2);
             this.selectorMiddleRight.Name = "selectorMiddleRight";
             this.selectorMiddleRight.Size = new System.Drawing.Size(50, 30);
             this.selectorMiddleRight.TabIndex = 10;
@@ -222,7 +208,7 @@
             // selectorTopRight
             // 
             this.selectorTopRight.Location = new System.Drawing.Point(718, 131);
-            this.selectorTopRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectorTopRight.Margin = new System.Windows.Forms.Padding(2);
             this.selectorTopRight.Name = "selectorTopRight";
             this.selectorTopRight.Size = new System.Drawing.Size(50, 30);
             this.selectorTopRight.TabIndex = 11;
@@ -233,7 +219,7 @@
             // keypad1
             // 
             this.keypad1.Location = new System.Drawing.Point(259, 400);
-            this.keypad1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad1.Margin = new System.Windows.Forms.Padding(2);
             this.keypad1.Name = "keypad1";
             this.keypad1.Size = new System.Drawing.Size(57, 42);
             this.keypad1.TabIndex = 12;
@@ -244,7 +230,7 @@
             // keypad2
             // 
             this.keypad2.Location = new System.Drawing.Point(328, 400);
-            this.keypad2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad2.Margin = new System.Windows.Forms.Padding(2);
             this.keypad2.Name = "keypad2";
             this.keypad2.Size = new System.Drawing.Size(57, 42);
             this.keypad2.TabIndex = 13;
@@ -255,7 +241,7 @@
             // keypad3
             // 
             this.keypad3.Location = new System.Drawing.Point(394, 400);
-            this.keypad3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad3.Margin = new System.Windows.Forms.Padding(2);
             this.keypad3.Name = "keypad3";
             this.keypad3.Size = new System.Drawing.Size(57, 42);
             this.keypad3.TabIndex = 14;
@@ -267,18 +253,18 @@
             // 
             this.keypadCancel.BackColor = System.Drawing.Color.Red;
             this.keypadCancel.Location = new System.Drawing.Point(463, 400);
-            this.keypadCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadCancel.Margin = new System.Windows.Forms.Padding(2);
             this.keypadCancel.Name = "keypadCancel";
             this.keypadCancel.Size = new System.Drawing.Size(57, 42);
             this.keypadCancel.TabIndex = 15;
             this.keypadCancel.Text = "CANCEL";
             this.keypadCancel.UseVisualStyleBackColor = false;
-            this.keypadCancel.Click += new System.EventHandler(this.keypad_Click);
+            this.keypadCancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // keypad4
             // 
             this.keypad4.Location = new System.Drawing.Point(259, 453);
-            this.keypad4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad4.Margin = new System.Windows.Forms.Padding(2);
             this.keypad4.Name = "keypad4";
             this.keypad4.Size = new System.Drawing.Size(57, 42);
             this.keypad4.TabIndex = 16;
@@ -290,18 +276,18 @@
             // 
             this.keypadClear.BackColor = System.Drawing.Color.Yellow;
             this.keypadClear.Location = new System.Drawing.Point(463, 453);
-            this.keypadClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadClear.Margin = new System.Windows.Forms.Padding(2);
             this.keypadClear.Name = "keypadClear";
             this.keypadClear.Size = new System.Drawing.Size(57, 42);
             this.keypadClear.TabIndex = 17;
             this.keypadClear.Text = "CLEAR";
             this.keypadClear.UseVisualStyleBackColor = false;
-            this.keypadClear.Click += new System.EventHandler(this.keypad_Click);
+            this.keypadClear.Click += new System.EventHandler(this.clear_Click);
             // 
             // keypad6
             // 
             this.keypad6.Location = new System.Drawing.Point(394, 453);
-            this.keypad6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad6.Margin = new System.Windows.Forms.Padding(2);
             this.keypad6.Name = "keypad6";
             this.keypad6.Size = new System.Drawing.Size(57, 42);
             this.keypad6.TabIndex = 18;
@@ -312,7 +298,7 @@
             // keypad5
             // 
             this.keypad5.Location = new System.Drawing.Point(328, 453);
-            this.keypad5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad5.Margin = new System.Windows.Forms.Padding(2);
             this.keypad5.Name = "keypad5";
             this.keypad5.Size = new System.Drawing.Size(57, 42);
             this.keypad5.TabIndex = 19;
@@ -323,7 +309,7 @@
             // keypad0
             // 
             this.keypad0.Location = new System.Drawing.Point(328, 568);
-            this.keypad0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad0.Margin = new System.Windows.Forms.Padding(2);
             this.keypad0.Name = "keypad0";
             this.keypad0.Size = new System.Drawing.Size(57, 42);
             this.keypad0.TabIndex = 20;
@@ -334,7 +320,7 @@
             // keypad9
             // 
             this.keypad9.Location = new System.Drawing.Point(394, 511);
-            this.keypad9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad9.Margin = new System.Windows.Forms.Padding(2);
             this.keypad9.Name = "keypad9";
             this.keypad9.Size = new System.Drawing.Size(57, 42);
             this.keypad9.TabIndex = 21;
@@ -345,7 +331,7 @@
             // keypad8
             // 
             this.keypad8.Location = new System.Drawing.Point(328, 511);
-            this.keypad8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad8.Margin = new System.Windows.Forms.Padding(2);
             this.keypad8.Name = "keypad8";
             this.keypad8.Size = new System.Drawing.Size(57, 42);
             this.keypad8.TabIndex = 22;
@@ -356,7 +342,7 @@
             // keypad7
             // 
             this.keypad7.Location = new System.Drawing.Point(259, 511);
-            this.keypad7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypad7.Margin = new System.Windows.Forms.Padding(2);
             this.keypad7.Name = "keypad7";
             this.keypad7.Size = new System.Drawing.Size(57, 42);
             this.keypad7.TabIndex = 23;
@@ -368,18 +354,18 @@
             // 
             this.keypadEnter.BackColor = System.Drawing.Color.Lime;
             this.keypadEnter.Location = new System.Drawing.Point(463, 511);
-            this.keypadEnter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadEnter.Margin = new System.Windows.Forms.Padding(2);
             this.keypadEnter.Name = "keypadEnter";
             this.keypadEnter.Size = new System.Drawing.Size(57, 42);
             this.keypadEnter.TabIndex = 24;
             this.keypadEnter.Text = "ENTER";
             this.keypadEnter.UseVisualStyleBackColor = false;
-            this.keypadEnter.Click += new System.EventHandler(this.keypad_Click);
+            this.keypadEnter.Click += new System.EventHandler(this.enter_Click);
             // 
             // keypadDummy2
             // 
             this.keypadDummy2.Location = new System.Drawing.Point(394, 568);
-            this.keypadDummy2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadDummy2.Margin = new System.Windows.Forms.Padding(2);
             this.keypadDummy2.Name = "keypadDummy2";
             this.keypadDummy2.Size = new System.Drawing.Size(57, 42);
             this.keypadDummy2.TabIndex = 25;
@@ -388,7 +374,7 @@
             // keypadDummy1
             // 
             this.keypadDummy1.Location = new System.Drawing.Point(259, 568);
-            this.keypadDummy1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadDummy1.Margin = new System.Windows.Forms.Padding(2);
             this.keypadDummy1.Name = "keypadDummy1";
             this.keypadDummy1.Size = new System.Drawing.Size(57, 42);
             this.keypadDummy1.TabIndex = 26;
@@ -397,7 +383,7 @@
             // keypadDummy3
             // 
             this.keypadDummy3.Location = new System.Drawing.Point(463, 568);
-            this.keypadDummy3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keypadDummy3.Margin = new System.Windows.Forms.Padding(2);
             this.keypadDummy3.Name = "keypadDummy3";
             this.keypadDummy3.Size = new System.Drawing.Size(57, 42);
             this.keypadDummy3.TabIndex = 27;
@@ -408,7 +394,7 @@
             this.pictureBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBox.ErrorImage = null;
             this.pictureBox.Location = new System.Drawing.Point(69, 26);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(640, 360);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -419,7 +405,7 @@
             // 
             this.lblCentre.BackColor = System.Drawing.Color.Transparent;
             this.lblCentre.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCentre.Location = new System.Drawing.Point(69, 189);
+            this.lblCentre.Location = new System.Drawing.Point(0, 189);
             this.lblCentre.Margin = new System.Windows.Forms.Padding(0);
             this.lblCentre.Name = "lblCentre";
             this.lblCentre.Size = new System.Drawing.Size(640, 34);
@@ -433,7 +419,7 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTitle.Location = new System.Drawing.Point(69, 102);
+            this.lblTitle.Location = new System.Drawing.Point(0, 102);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(642, 28);
@@ -449,8 +435,6 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(777, 622);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblCentre);
             this.Controls.Add(this.keypadDummy3);
             this.Controls.Add(this.keypadDummy1);
             this.Controls.Add(this.keypadDummy2);
@@ -474,10 +458,11 @@
             this.Controls.Add(this.selectorBottomLeft);
             this.Controls.Add(this.selectorTopLeft);
             this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblCentre);
             this.Controls.Add(this.menuStrip);
-            this.Controls.Add(this.title);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(793, 661);
             this.MinimumSize = new System.Drawing.Size(793, 661);
             this.Name = "ATM";
@@ -491,7 +476,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label title;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuToolStrip;
         private System.Windows.Forms.PictureBox pictureBox;
