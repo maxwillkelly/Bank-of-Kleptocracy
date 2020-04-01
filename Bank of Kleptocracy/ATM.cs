@@ -28,6 +28,7 @@ namespace Bank_of_Kleptocracy
         private Bank bank;
         private Card cardInserted;
         private Card[] cards;
+        private Label[] labels;
         private readonly Random rnd;
         // Stores the user's inputted pin
         private string pin;
@@ -35,7 +36,7 @@ namespace Bank_of_Kleptocracy
         private string amount = "";
         // Stores the Atm operation we are currently using
         private int operation = (int) AtmOperations.Default;
-
+        
 
         public ATM(ref Bank bank)
         {
@@ -43,8 +44,11 @@ namespace Bank_of_Kleptocracy
             // Sets up default background
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
             // Allows for transparency of labels
-            lblCentre.Parent = pictureBox;
-            lblTitle.Parent = pictureBox;
+            labels = new[] {lblCentre, lblTitle, lblTopLeft, lblMiddleLeft, lblBottomLeft, lblTopRight, lblMiddleRight, lblBottomRight};
+            foreach (var lbl in labels)
+            {
+                lbl.Parent = pictureBox;
+            }
             // Initialises variables
             this.bank = bank;
             rnd = new Random();
@@ -309,6 +313,18 @@ namespace Bank_of_Kleptocracy
         private void selector_Click(object sender, EventArgs e)
         {
             var selectorButton = (Button) sender;
+        }
+
+        private void displayMainMenu()
+        {
+            lblTitle.Text = "Select an operation";
+            lblTitle.Visible = true;
+            lblCentre.Visible = false;
+            lblMiddleLeft.Text = "Withdraw Cash";
+            lblMiddleLeft.Visible = true;
+            lblBottomLeft.Visible = false;
+            lblMiddleRight.Text = "Display Balance";
+            lblBottomRight.Visible = false;
         }
     }
 }
