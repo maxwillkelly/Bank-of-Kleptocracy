@@ -58,7 +58,7 @@ namespace Bank_of_Kleptocracy
 
         public void CreateCard(int accountNumber)
         {
-            cards.Append(new Card(accountNumber));
+            cards.Add(new Card(accountNumber));
         }
 
         /*
@@ -197,7 +197,6 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("No card inserted");
                     break;
                 case (int) AtmStates.Success:
-                    // TODO: Return to insert card screen
                     Console.WriteLine("Card ejected");
                     pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
                     break;

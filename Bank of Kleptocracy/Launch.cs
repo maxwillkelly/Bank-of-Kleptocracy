@@ -55,7 +55,8 @@ namespace Bank_of_Kleptocracy
 
         private void LaunchBank()
         {
-            Application.Run(new Bank(isSemaphored, accounts));
+            bank = new Bank(isSemaphored, accounts);
+            Application.Run(bank);
         }
 
         private void LaunchATM()
