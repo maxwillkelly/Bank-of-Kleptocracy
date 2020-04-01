@@ -42,7 +42,7 @@ namespace Bank_of_Kleptocracy
             this.isSemaphored = IsSemaphored;
             if (isSemaphored)
             {
-                sem = new Semaphore(0, 1);
+                sem = new Semaphore(0, 2);
             }
             this.accounts = accounts;
         }
