@@ -22,7 +22,7 @@ namespace Bank_of_Kleptocracy
 		}
 		finally
 		{
-			sem.Release();
+			sem.Release(1);
 		}
 		*/
 
@@ -42,7 +42,7 @@ namespace Bank_of_Kleptocracy
             this.isSemaphored = IsSemaphored;
             if (isSemaphored)
             {
-                sem = new Semaphore(0, 1);
+                sem = new Semaphore(0, 2);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -116,7 +116,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -145,7 +145,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -179,7 +179,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -213,12 +213,12 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
         //* add a bank account 													<--- NEEDS ERROR CHECKING
-        public int addAccount(int accountNumber, string pin, int balance = 0)
+        public int addAccount(int accNum, string pin, int balance = 0)
         {
             try
             {
@@ -230,7 +230,7 @@ namespace Bank_of_Kleptocracy
                 {
                     tempAccounts[i] = accounts[i];
                 }
-				tempAccounts[accounts.Length] = new Account(accountNumber, pin, balance);
+				tempAccounts[accounts.Length] = new Account(accNum, pin, balance);
 				
 				return 0;
             }
@@ -242,7 +242,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
     }
