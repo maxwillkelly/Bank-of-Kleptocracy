@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
@@ -27,9 +29,9 @@ namespace Bank_of_Kleptocracy
     {
         private Bank bank;
         private Card cardInserted;
-        private Card[] cards;
+        private List<Card> cards;
         private Label[] labels;
-        private readonly Random rnd;
+        
         // Stores the user's inputted pin
         private string pin;
         // Stores the user's amount selected using any operation in currency
@@ -51,15 +53,12 @@ namespace Bank_of_Kleptocracy
             }
             // Initialises variables
             this.bank = bank;
-            rnd = new Random();
-            InitCards();
+            cards = new List<Card>();
         }
 
-        private void InitCards()
+        public void CreateCard(int accountNumber)
         {
-            cards = new Card[3];
-            for (var index = 0; index < cards.Length; index++) 
-                cards[index] = new Card(rnd);
+            cards.Append(new Card(accountNumber));
         }
 
         /*
@@ -67,7 +66,7 @@ namespace Bank_of_Kleptocracy
          */
         public int InsertCard(int cardIndex)
         {
-            if (cardIndex >= cards.Length)
+            if (cardIndex >= cards.Count)
                 return (int) AtmStates.InvalidCardIndex;
 
             if (cardInserted != null)
@@ -143,7 +142,7 @@ namespace Bank_of_Kleptocracy
 
         private void PrintCards()
         {
-            for (var cardIndex = 0; cardIndex < cards.Length; cardIndex++)
+            for (var cardIndex = 0; cardIndex < cards.Count; cardIndex++)
             {
                 var card = cards[cardIndex];
                 Console.Write("Card Index:" + cardIndex + "\t");
