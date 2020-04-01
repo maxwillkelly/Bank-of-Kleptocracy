@@ -14,6 +14,7 @@ namespace Bank_of_Kleptocracy
     public partial class Launch : Form
     {
         private int numAtms = 1;
+        private bool isSemaphored = false;
         private Bank bank;
         public Launch()
         {
@@ -41,7 +42,7 @@ namespace Bank_of_Kleptocracy
 
         private void LaunchBank()
         {
-            bank = new Bank();
+            bank = new Bank(isSemaphored);
             Application.Run(bank);
         }
 
@@ -50,7 +51,7 @@ namespace Bank_of_Kleptocracy
             Application.Run(new ATM(ref bank));
         }
 
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult popup;
             popup = MessageBox.Show("ATM Simulator \n\nCreated and programmed by:\n\nMax Kelly \nTadas Saltenis \nMax Fyall \n\nThank you", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,6 +70,26 @@ namespace Bank_of_Kleptocracy
             if (exit == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void radioBtnIncorrectBalance_CheckedChanged(object sender, EventArgs e)
+        {
+            var radioBtn = (RadioButton)sender;
+            if (radioBtn.Checked)
+            {
+                isSemaphored = false;
+                Console.WriteLine("isSemaphored set to false");
+            }
+        }
+
+        private void radioBtnCorrectBalance_CheckedChanged(object sender, EventArgs e)
+        {
+            var radioBtn = (RadioButton) sender;
+            if (radioBtn.Checked)
+            {
+                isSemaphored = true;
+                Console.WriteLine("isSemaphored set to true");
             }
         }
     }
