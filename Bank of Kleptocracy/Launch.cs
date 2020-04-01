@@ -15,7 +15,11 @@ namespace Bank_of_Kleptocracy
     {
         private int numAtms = 1;
         private bool isSemaphored = false;
+        private int generatedAccounts = 3;
+        private Account[] accounts;
         private Bank bank;
+        private Random rnd;
+
         public Launch()
         {
             InitializeComponent();
@@ -29,9 +33,18 @@ namespace Bank_of_Kleptocracy
         private void btnStart_Click(object sender, EventArgs e)
         {
             Hide();
+            // Randomly generates account applications to produce Accounts and Cards
+            accounts = new Account[generatedAccounts];
+            rnd = new Random();
+            for (var i = 0; i < generatedAccounts; i++)
+            {
+                accounts[i] = new Account(rnd);
+            }
+
             // Creates and starts each thread
             Thread bankThread = new Thread(new ThreadStart(LaunchBank));
             bankThread.Start();
+
             // Starts each ATM
             for (int i = 0; i < numAtms; i++)
             {
@@ -42,13 +55,18 @@ namespace Bank_of_Kleptocracy
 
         private void LaunchBank()
         {
-            bank = new Bank(isSemaphored);
+            bank = new Bank(isSemaphored, accounts);
             Application.Run(bank);
         }
 
         private void LaunchATM()
         {
-            Application.Run(new ATM(ref bank));
+            var atm = new ATM(ref bank);
+            foreach (var account in accounts)
+            {
+                atm.CreateCard(account.AccountNumber);
+            }
+            Application.Run(atm);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
