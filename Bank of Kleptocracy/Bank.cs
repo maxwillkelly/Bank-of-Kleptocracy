@@ -28,7 +28,7 @@ namespace Bank_of_Kleptocracy
 
         //* threads control
 
-        bool isSemaphored;
+        bool isSemaphored = false;
         private Semaphore sem;
 
         //* vars
@@ -36,29 +36,29 @@ namespace Bank_of_Kleptocracy
         public int BankNumber { get; }
 
         //* initialize this class
-        public Bank(bool IsSemaphored)
+        public Bank(bool IsSemaphored, Account[] accounts)
         {
             InitializeComponent();
             this.isSemaphored = IsSemaphored;
             if (isSemaphored)
             {
-                new Semaphore(0, 1);
+                sem = new Semaphore(0, 2);
             }
+            this.accounts = accounts;
         }
 
         //* Initialize a number of accounts with random data
-        public void InitAccounts(int n)
+        /*public void InitAccounts(int n)
         {
             try
             {
                 if (isSemaphored)
                     sem.WaitOne();
 
-                accounts = new Account[n];
                 Random rnd = new Random();
                 for (int i = 0; i < n; i++)
                 {
-                    accounts[i] = new Account(rnd);
+                    accounts.Append(new Account(rnd));
                 }
             }
             finally
@@ -66,7 +66,7 @@ namespace Bank_of_Kleptocracy
                 if (isSemaphored)
                     sem.Release();
             }
-        }
+        }*/
 
         //* print all the data of every account
         public void Print()
@@ -89,7 +89,7 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        //* check if account with passed account number exists
+        //* check if account with passed account number and pin exists
         public int checkPin(int accNum, string pin)
         {
             try
