@@ -28,19 +28,31 @@ namespace Bank_of_Kleptocracy
         private Bank bank;
         private Card cardInserted;
         private Card[] cards;
+        private Label[] labels;
         private readonly Random rnd;
+        // Stores the user's inputted pin
         private string pin;
-        private int operation = (int) AtmOperations.Default;
         // Stores the user's amount selected using any operation in currency
-        private string amountText = "";
+        private string amount = "";
+        // Stores the Atm operation we are currently using
+        private int operation = (int) AtmOperations.Default;
+        
 
         public ATM(ref Bank bank)
         {
             InitializeComponent();
+            // Sets up default background
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
+            // Allows for transparency of labels
+            labels = new[] {lblCentre, lblTitle, lblTopLeft, lblMiddleLeft, lblBottomLeft, lblTopRight, lblMiddleRight, lblBottomRight};
+            foreach (var lbl in labels)
+            {
+                lbl.Parent = pictureBox;
+            }
+            // Initialises variables
             this.bank = bank;
             rnd = new Random();
             InitCards();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
         }
 
         private void InitCards()
@@ -50,7 +62,9 @@ namespace Bank_of_Kleptocracy
                 cards[index] = new Card(rnd);
         }
 
-        // Main functionality
+        /*
+         * Background functionality
+         */
         public int InsertCard(int cardIndex)
         {
             if (cardIndex >= cards.Length)
@@ -127,13 +141,6 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
-        /*private Account FindAccount(int accountNumber, int bankNumber)
-        {
-            if (bank.BankNumber == bankNumber)
-                return bank.GetAccount(accountNumber);
-            return null;
-        }*/
-
         private void PrintCards()
         {
             for (var cardIndex = 0; cardIndex < cards.Length; cardIndex++)
@@ -145,7 +152,9 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        // User Interface
+        /*
+         * User Interface
+         */
         private void insertCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var item = (ToolStripMenuItem) sender;
@@ -166,8 +175,14 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("Account not found");
                     break;
                 case (int) AtmStates.Success:
-                    // TODO: Check pin
                     Console.WriteLine("Card inserted");
+                    operation = (int) AtmOperations.InputPin;
+                    pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+                    lblCentre.Text = "";
+                    lblTitle.Text = "Please enter your pin";
+                    lblCentre.Visible = true;
+                    lblTitle.Visible = true;
+
                     break;
                 default:
                     MessageBox.Show("Generic Error occurred on card insertion");
@@ -185,24 +200,13 @@ namespace Bank_of_Kleptocracy
                 case (int) AtmStates.Success:
                     // TODO: Return to insert card screen
                     Console.WriteLine("Card ejected");
+                    pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
                     break;
                 default:
                     MessageBox.Show("Generic Error occurred on card ejection");
                     break;
             }
         }
-
-        /*private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // TODO: Help Dialog
-            Console.WriteLine("Display Help");
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // TODO: About Dialog
-            Console.WriteLine("Display About");
-        }*/
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -225,27 +229,85 @@ namespace Bank_of_Kleptocracy
         {
             var keyButton = (Button) sender;
             // Checks if button is a number
-            if (int.TryParse(keyButton.Text, out _)) 
-                amountText += keyButton.Text;
-            else
+            if (int.TryParse(keyButton.Text, out _))
             {
-                switch (keyButton.Text)
+                switch (operation)
                 {
-                    case "CANCEL":
-                        operation = (int) AtmOperations.Default;
+                    case (int) AtmOperations.InputPin:
+                        pin += keyButton.Text;
+                        lblCentre.Text += '*';
                         break;
-                    case "CLEAR":
-                        amountText = "";
-                        break;
-                    case "ENTER":
-                        processOperation();
+                    case (int) AtmOperations.InputWithdraw:
                         break;
                     default:
-                        Console.WriteLine("Error: Keypad Button not identified");
+                        Console.WriteLine("Error: Keypad Input Invalid Operation as Integer");
                         break;
                 }
             }
+            else
+            {
+                Console.WriteLine("Error: Keypad Button not identified");
+            }
+        }
 
+        private void cancel_Click(object sender, EventArgs e)
+        {
+            switch (operation)
+            {
+                case (int) AtmOperations.InputPin:
+                    pin = "";
+                    lblCentre.Visible = false;
+                    lblTitle.Visible = false;
+                    ejectToolStripMenuItem_Click(new object(), new EventArgs());
+                    break;
+                case (int) AtmOperations.InputWithdraw:
+                    break;
+                case (int) AtmOperations.Default:
+                    break;
+                default:
+                    Console.WriteLine("Error: Invalid Cancel Operation");
+                    break;
+            }
+
+            operation = (int) AtmOperations.Default;
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            lblCentre.Text = "";
+            switch (operation)
+            {
+                case (int) AtmOperations.InputPin:
+                    pin = "";
+                    break;
+                case (int) AtmOperations.InputWithdraw:
+                    amount = "";
+                    break;
+                case (int) AtmOperations.Default:
+                    break;
+                default:
+                    Console.WriteLine("Error: Invalid Clear Operation");
+                    break;
+            }
+        }
+
+        private void enter_Click(object sender, EventArgs e)
+        {
+            switch (operation)
+            {
+                case (int) AtmOperations.InputPin:
+                    CheckPin(pin);
+                    break;
+                case (int) AtmOperations.InputWithdraw:
+                    var amountInt = int.Parse(amount);
+                    Withdraw(amountInt);
+                    break;
+                case (int) AtmOperations.Default:
+                    break;
+                default:
+                    Console.WriteLine("Error: Invalid Enter Operation");
+                    break;
+            }
         }
 
         private void selector_Click(object sender, EventArgs e)
@@ -253,30 +315,16 @@ namespace Bank_of_Kleptocracy
             var selectorButton = (Button) sender;
         }
 
-        private void processOperation()
+        private void displayMainMenu()
         {
-            switch (operation)
-            {
-                case (int) AtmOperations.InputPin:
-                    CheckPin(amountText);
-                    amountText = "";
-                    break;
-                case (int)AtmOperations.InputWithdraw:
-                    var amount = int.Parse(amountText);
-                    Withdraw(amount);
-                    break;
-                case (int) AtmOperations.Default:
-                    break;
-                default:
-                    Console.WriteLine("Error: Invalid Process Operation");
-                    break;
-            }       
-        }
-
-        private void pictureBox_Click(object sender, EventArgs e)
-        {
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            lblTitle.Text = "Select an operation";
+            lblTitle.Visible = true;
+            lblCentre.Visible = false;
+            lblMiddleLeft.Text = "Withdraw Cash";
+            lblMiddleLeft.Visible = true;
+            lblBottomLeft.Visible = false;
+            lblMiddleRight.Text = "Display Balance";
+            lblBottomRight.Visible = false;
         }
     }
 }
