@@ -28,7 +28,7 @@ namespace Bank_of_Kleptocracy
 
         //* threads control
 
-        bool isSemaphored;
+        bool isSemaphored = false;
         private Semaphore sem;
 
         //* vars
@@ -42,7 +42,7 @@ namespace Bank_of_Kleptocracy
             this.isSemaphored = IsSemaphored;
             if (isSemaphored)
             {
-                new Semaphore(0, 1);
+                sem = new Semaphore(0, 1);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        //* check if account with passed account number exists
+        //* check if account with passed account number and pin exists
         public int checkPin(int accNum, string pin)
         {
             try
