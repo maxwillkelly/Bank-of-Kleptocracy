@@ -109,5 +109,14 @@
   <ItemGroup>
     <None Include="Resources\atm_startup.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\process.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinNumber.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
