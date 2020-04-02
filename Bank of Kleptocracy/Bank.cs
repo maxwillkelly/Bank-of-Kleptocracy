@@ -13,19 +13,6 @@ namespace Bank_of_Kleptocracy
 {
     public partial class Bank : Form
     {
-        /*
-		try
-		{
-			sem.WaitOne();
-			
-			// do something
-		}
-		finally
-		{
-			sem.Release();
-		}
-		*/
-
         //* threads control
 
         bool isSemaphored = false;
@@ -42,7 +29,8 @@ namespace Bank_of_Kleptocracy
             this.isSemaphored = IsSemaphored;
             if (isSemaphored)
             {
-                sem = new Semaphore(0, 2);
+                sem = new Semaphore(0, 1);
+                sem.Release(1);
             }
             this.accounts = accounts;
         }
@@ -64,7 +52,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }*/
 
@@ -85,7 +73,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -94,9 +82,11 @@ namespace Bank_of_Kleptocracy
         {
             try
             {
+                Console.WriteLine("yo1");
                 if (isSemaphored)
                     sem.WaitOne();
 
+                Console.WriteLine("yo2");
                 for (int i = 0; i < accounts.Length; i++)
                 {
                     if (accNum == accounts[i].AccountNumber)
@@ -116,7 +106,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -145,7 +135,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -179,7 +169,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
@@ -199,7 +189,7 @@ namespace Bank_of_Kleptocracy
                         accounts[accIndex].Balance += amount;
                         return 0; //* deposit goes through
                     }
-                    else return 1; //* deposit exceeds allowed limit (come on, our bank isn't THAT safe...)
+                    else return 1; //* deposit exceeds allowed limit
                 }
                 else if (accIndex == -1)
                 {
@@ -213,12 +203,12 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
 
-        //* add a bank account 													<--- NEEDS ERROR CHECKING
-        public int addAccount(int accountNumber, string pin, int balance = 0)
+        //* add a bank account
+        public int addAccount(int accNum, string pin, int balance = 0)
         {
             try
             {
@@ -230,7 +220,7 @@ namespace Bank_of_Kleptocracy
                 {
                     tempAccounts[i] = accounts[i];
                 }
-				tempAccounts[accounts.Length] = new Account(accountNumber, pin, balance);
+				tempAccounts[accounts.Length] = new Account(accNum, pin, balance);
 				
 				return 0;
             }
@@ -242,7 +232,7 @@ namespace Bank_of_Kleptocracy
             finally
             {
                 if (isSemaphored)
-                    sem.Release();
+                    sem.Release(1);
             }
         }
     }
