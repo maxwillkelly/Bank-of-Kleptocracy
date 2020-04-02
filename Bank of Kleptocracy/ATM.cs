@@ -234,6 +234,8 @@ namespace Bank_of_Kleptocracy
                         lblCentre.Text += '*';
                         break;
                     case (int) AtmOperations.InputWithdraw:
+                        amount += keyButton.Text;
+                        lblCentre.Text += keyButton.Text;
                         break;
                     default:
                         Console.WriteLine("Error: Keypad Input Invalid Operation as Integer");
@@ -252,11 +254,11 @@ namespace Bank_of_Kleptocracy
             {
                 case (int) AtmOperations.InputPin:
                     pin = "";
-                    lblCentre.Visible = false;
-                    lblTitle.Visible = false;
                     ejectToolStripMenuItem_Click(new object(), new EventArgs());
                     break;
                 case (int) AtmOperations.InputWithdraw:
+                    amount = "";
+                    ejectToolStripMenuItem_Click(new object(), new EventArgs());
                     break;
                 case (int) AtmOperations.Default:
                     break;
@@ -337,10 +339,13 @@ namespace Bank_of_Kleptocracy
                         case "Withdraw Cash":
                             Console.WriteLine("Withdraw Cash");
                             operation = (int) AtmOperations.InputWithdraw;
+                            displayInputAmount();
                             break;
                         case "Display Balance":
                             Console.WriteLine("Display Balance");
                             operation = (int) AtmOperations.InputBalance;
+                            var balance = CheckBalance();
+                            displayBalance(balance);
                             break;
                         default:
                             Console.WriteLine("Operation not identified: " + label.Text);
@@ -414,6 +419,22 @@ namespace Bank_of_Kleptocracy
             lblMiddleRight.Text = "Display Balance";
             lblMiddleRight.Visible = true;
         }
+        private void displayInputAmount()
+        {
+            displayReset();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            lblCentre.Text = "£";
+            lblCentre.Visible = true;
+            lblTitle.Text = "Enter you Amount";
+            lblTitle.Visible = true;
+        }
+
+        private void displayBalance(int balance)
+        {
+            displayReset();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            lblCentre.Text = balance.ToString();
+        }
 
         private async void displayAccountNotFound()
         {
@@ -422,7 +443,7 @@ namespace Bank_of_Kleptocracy
             lblCentre.Text = "Account number not found: Contact Support";
             lblCentre.Visible = true;
             await Task.Delay(3000);
-            displayInsertCard();
+            ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
 
         private async void displayIncorrectPin()
@@ -432,12 +453,9 @@ namespace Bank_of_Kleptocracy
             lblCentre.Text = "Incorrect Pin";
             lblCentre.Visible = true;
             await Task.Delay(3000);
-            displayInsertCard();
+            ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
 
-        private void enterAmount()
-        {
 
-        }
     }
 }
