@@ -252,6 +252,9 @@ namespace Bank_of_Kleptocracy
         {
             switch (operation)
             {
+                case (int) AtmOperations.InputBalance:
+                    displayMainMenu();
+                    break;
                 case (int) AtmOperations.InputPin:
                     pin = "";
                     ejectToolStripMenuItem_Click(new object(), new EventArgs());
@@ -412,6 +415,7 @@ namespace Bank_of_Kleptocracy
         {
             operation = (int)AtmOperations.InputOptions;
             displayReset();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.menu);
             lblTitle.Text = "Select an operation";
             lblTitle.Visible = true;
             lblMiddleLeft.Text = "Withdraw Cash";
@@ -429,11 +433,16 @@ namespace Bank_of_Kleptocracy
             lblTitle.Visible = true;
         }
 
-        private void displayBalance(int balance)
+        private async void displayBalance(int balance)
         {
             displayReset();
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
-            lblCentre.Text = balance.ToString();
+            lblCentre.Text = "£" + balance.ToString("N0");
+            lblCentre.Visible = true;
+            lblTitle.Text = "You have";
+            lblTitle.Visible = true;
+            await Task.Delay(3000);
+            displayMainMenu();
         }
 
         private async void displayAccountNotFound()
@@ -455,7 +464,5 @@ namespace Bank_of_Kleptocracy
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
-
-
     }
 }
