@@ -19,6 +19,7 @@ namespace Bank_of_Kleptocracy
         private Account[] accounts;
         private Bank bank;
         private Random rnd;
+        private string startLog;
 
         public Launch()
         {
@@ -33,13 +34,17 @@ namespace Bank_of_Kleptocracy
         private void btnStart_Click(object sender, EventArgs e)
         {
             Hide();
+            initLogString();
             // Randomly generates account applications to produce Accounts and Cards
             accounts = new Account[generatedAccounts];
             rnd = new Random();
             for (var i = 0; i < generatedAccounts; i++)
             {
                 accounts[i] = new Account(rnd);
+                startLog += "Card Number: " + (i + 1) + "\tAccount Number: " + accounts[i].AccountNumber + "\tPin: " + accounts[i].Pin + "\t\tBalance: " + accounts[i].Balance + "\n";
             }
+
+            startLog += "\nAccounts Generated\n";
 
             // Creates and starts each thread
             Thread bankThread = new Thread(new ThreadStart(LaunchBank));
@@ -53,10 +58,22 @@ namespace Bank_of_Kleptocracy
             }
         }
 
+        private void initLogString()
+        {
+            startLog += "Preparing to launch simulation\n";
+            startLog += "Settings:\tGenerating Accounts: " + generatedAccounts + "\tSimulation Type: ";
+            if (isSemaphored)
+                startLog += "Correct Balance";
+            else
+                startLog += "Incorrect Balance";
+            startLog += "\nGenerating Accounts...\n\nAccount List:\n";
+        }
+
         private void LaunchBank()
         {
-            bank = new Bank(isSemaphored, accounts);
+            bank = new Bank(isSemaphored, accounts, startLog);
             Application.Run(bank);
+            startLog += "Bank launched\n";
         }
 
         private void LaunchATM()
@@ -65,8 +82,6 @@ namespace Bank_of_Kleptocracy
             for (var i = 0; i < accounts.Length; i++)
             {
                 var account = accounts[i];
-                Console.Write("Card Number: " + i + " ");
-                account.Print();
                 atm.CreateCard(account.AccountNumber);
             }
 
