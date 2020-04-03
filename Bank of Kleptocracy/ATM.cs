@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -89,9 +90,9 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
-        public int CheckBalance()
+        public int CheckBalance(out int balance)
         {
-            var balance = bank.balanceCheck(cardInserted.AccountNumber, pin);
+            balance = bank.balanceCheck(cardInserted.AccountNumber, pin);
             switch (balance)
             {
                 case -1:
@@ -99,7 +100,7 @@ namespace Bank_of_Kleptocracy
                 case -2:
                     return (int)AtmStates.IncorrectPin;
             }
-            return balance;
+            return (int) AtmStates.Success;
         }
 
         public int CheckPin(string pin)
@@ -263,6 +264,9 @@ namespace Bank_of_Kleptocracy
                     amount = "";
                     ejectToolStripMenuItem_Click(new object(), new EventArgs());
                     break;
+                case (int)AtmOperations.InputOptions:
+                    ejectToolStripMenuItem_Click(new object(), new EventArgs());
+                    break;
                 case (int) AtmOperations.Default:
                     break;
                 default:
@@ -297,28 +301,16 @@ namespace Bank_of_Kleptocracy
             switch (operation)
             {
                 case (int) AtmOperations.InputPin:
-                    switch (CheckPin(pin))
-                    {
-                        case (int) AtmStates.Success:
-                            displayMainMenu();
-                            break;
-                        case (int)AtmStates.AccountNotFound:
-                            Console.WriteLine("Account Not Found");
-                            displayAccountNotFound();
-                            break;
-                        case (int)AtmStates.IncorrectPin:
-                            Console.WriteLine("Incorrect Pin");
-                            displayIncorrectPin();
-                            break;
-                        default:
-                            break;
-                    }
+                    processCheckPin();
 
                     break;
                 case (int) AtmOperations.InputWithdraw:
                     var amountInt = int.Parse(amount);
-                    Withdraw(amountInt);
-                    displayMainMenu();
+                    var returnVal = Withdraw(amountInt);
+                    if (returnVal == (int) AtmStates.Success)
+                    {
+                        displayWithdraw();
+                    }
                     break;
                 case (int) AtmOperations.Default:
                     Console.WriteLine("Default Operation");
@@ -345,10 +337,7 @@ namespace Bank_of_Kleptocracy
                             displayInputAmount();
                             break;
                         case "Display Balance":
-                            Console.WriteLine("Display Balance");
-                            operation = (int) AtmOperations.InputBalance;
-                            var balance = CheckBalance();
-                            displayBalance(balance);
+                            processBalance();
                             break;
                         default:
                             Console.WriteLine("Operation not identified: " + label.Text);
@@ -357,6 +346,34 @@ namespace Bank_of_Kleptocracy
 
                     break;
             }
+        }
+
+        private void processCheckPin()
+        {
+            switch (CheckPin(pin))
+            {
+                case (int)AtmStates.Success:
+                    displayMainMenu();
+                    break;
+                case (int)AtmStates.AccountNotFound:
+                    Console.WriteLine("Account Not Found");
+                    displayAccountNotFound();
+                    break;
+                case (int)AtmStates.IncorrectPin:
+                    Console.WriteLine("Incorrect Pin");
+                    displayIncorrectPin();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void processBalance()
+        {
+            Console.WriteLine("Display Balance");
+            operation = (int) AtmOperations.InputBalance;
+            var returnVal = CheckBalance(out var balance);
+            displayBalance(returnVal, balance);
         }
 
         // Returns the matching label matching with an inputted selector
@@ -413,7 +430,7 @@ namespace Bank_of_Kleptocracy
 
         private void displayMainMenu()
         {
-            operation = (int)AtmOperations.InputOptions;
+            operation = (int) AtmOperations.InputOptions;
             displayReset();
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.menu);
             lblTitle.Text = "Select an operation";
@@ -433,7 +450,7 @@ namespace Bank_of_Kleptocracy
             lblTitle.Visible = true;
         }
 
-        private async void displayBalance(int balance)
+        private async void displayBalance(int returnVal, int balance)
         {
             displayReset();
             pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
@@ -443,6 +460,18 @@ namespace Bank_of_Kleptocracy
             lblTitle.Visible = true;
             await Task.Delay(3000);
             displayMainMenu();
+        }
+
+        private async void displayWithdraw()
+        {
+            displayReset();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            lblCentre.Text = "Take card";
+            lblCentre.Visible = true;
+            await Task.Delay(1500);
+            lblCentre.Text = "Take money";
+            await Task.Delay(3000);
+            ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
 
         private async void displayAccountNotFound()
