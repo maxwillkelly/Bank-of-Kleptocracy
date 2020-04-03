@@ -412,6 +412,7 @@ namespace Bank_of_Kleptocracy
         {
             operation = (int)AtmOperations.InputOptions;
             displayReset();
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
             lblTitle.Text = "Select an operation";
             lblTitle.Visible = true;
             lblMiddleLeft.Text = "Withdraw Cash";
@@ -455,7 +456,5 @@ namespace Bank_of_Kleptocracy
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
-
-
     }
 }

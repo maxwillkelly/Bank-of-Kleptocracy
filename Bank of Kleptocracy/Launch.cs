@@ -62,10 +62,14 @@ namespace Bank_of_Kleptocracy
         private void LaunchATM()
         {
             var atm = new ATM(ref bank);
-            foreach (var account in accounts)
+            for (var i = 0; i < accounts.Length; i++)
             {
+                var account = accounts[i];
+                Console.Write("Card Number: " + i + " ");
+                account.Print();
                 atm.CreateCard(account.AccountNumber);
             }
+
             Application.Run(atm);
         }
 
