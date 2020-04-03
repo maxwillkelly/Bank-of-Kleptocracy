@@ -36,7 +36,7 @@ namespace Bank_of_Kleptocracy
         public int BankNumber { get; }
 
         //* initialize this class
-        public Bank(bool IsSemaphored, Account[] accounts)
+        public Bank(bool IsSemaphored, Account[] accounts, string log)
         {
             InitializeComponent();
             this.isSemaphored = IsSemaphored;
@@ -45,6 +45,7 @@ namespace Bank_of_Kleptocracy
                 sem = new Semaphore(0, 2);
             }
             this.accounts = accounts;
+            logBox.Text = log;
         }
 
         //* Initialize a number of accounts with random data
