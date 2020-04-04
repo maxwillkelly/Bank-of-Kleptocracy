@@ -20,7 +20,8 @@ namespace Bank_of_Kleptocracy
         CardInserted,
         CardNotInitialised,
         CardNotInserted,
-        AccountNotFound
+        AccountNotFound,
+        InsufficientFunds
     }
 
     public enum AtmOperations
@@ -138,13 +139,17 @@ namespace Bank_of_Kleptocracy
                 return (int) AtmStates.CardNotInserted;
 
             var withdraw = bank.balanceWithdraw(cardInserted.AccountNumber, pin, amount);
+            
             switch (withdraw)
             {
+                case 1:
+                    return (int) AtmStates.InsufficientFunds;
                 case -1:
                     return (int) AtmStates.AccountNotFound;
                 case -2:
                     return (int) AtmStates.IncorrectPin;
             }
+
             return (int) AtmStates.Success;
         }
 
@@ -308,15 +313,9 @@ namespace Bank_of_Kleptocracy
             {
                 case (int) AtmOperations.InputPin:
                     processCheckPin();
-
                     break;
                 case (int) AtmOperations.InputWithdraw:
-                    var amountInt = int.Parse(amount);
-                    var returnVal = Withdraw(amountInt);
-                    if (returnVal == (int) AtmStates.Success)
-                    {
-                        displayWithdraw();
-                    }
+                    processWithdraw();
                     break;
                 case (int) AtmOperations.Default:
                     Console.WriteLine("Default Operation");
@@ -370,6 +369,28 @@ namespace Bank_of_Kleptocracy
                     displayIncorrectPin();
                     break;
                 default:
+                    break;
+            }
+        }
+
+        private void processWithdraw()
+        {
+            var amountInt = int.Parse(amount);
+            var returnVal = Withdraw(amountInt);
+            amount = "";
+            switch (returnVal)
+            {
+                case (int) AtmStates.Success:
+                    displayWithdraw();
+                    break;
+                case (int) AtmStates.InsufficientFunds:
+                    displayInsufficientFunds();
+                    break;
+                case (int) AtmStates.AccountNotFound:
+                    displayAccountNotFound();
+                    break;
+                case (int) AtmStates.IncorrectPin:
+                    displayIncorrectPin();
                     break;
             }
         }
@@ -458,6 +479,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayBalance(int returnVal, int balance)
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "£" + balance.ToString("N0");
@@ -470,6 +492,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayWithdraw()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.take_card);
             Console.WriteLine("Card Ejected");
@@ -482,6 +505,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayAccountNotFound()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "Account number not found: Contact Support";
@@ -492,12 +516,20 @@ namespace Bank_of_Kleptocracy
 
         private async void displayIncorrectPin()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.wrong_pin);
-            //lblCentre.Text = "Incorrect Pin";
-            //lblCentre.Visible = true;
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
+        }
+
+        private async void displayInsufficientFunds()
+        {
+            operation = (int)AtmOperations.Default;
+            displayReset();
+            pictureBox.Image = new Bitmap(Resources.sky);
+            await Task.Delay(3000);
+            displayMainMenu();
         }
     }
 }
