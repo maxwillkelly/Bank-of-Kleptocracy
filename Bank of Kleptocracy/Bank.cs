@@ -106,12 +106,12 @@ namespace Bank_of_Kleptocracy
 		//* check if account with passed account number and pin exists (first check only, when user enters their pin)
 		public int checkPin(int accNum, string pin)
 		{
-            appendLog("<BANK> Attempting to check PIN\n");
-			
-			try
+            try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
+                
+                appendLog("<BANK> Attempting to check PIN\n");
 
 				return checkPinNoSem(accNum, pin);
 			}
@@ -125,16 +125,15 @@ namespace Bank_of_Kleptocracy
 		//* check account's balance
 		public int balanceCheck(int accNum, string pin)
 		{
-			appendLog("<BANK> Attempting to check balance of account [" + accNum + "]\n");
-
-			try
+            try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
-				int accIndex = checkPinNoSem(accNum, pin); 	//* check and get index of account in use
-
-				if (accIndex >= 0) 							//* if returned index is not an error code
+                appendLog("<BANK> Attempting to check balance of account [" + accNum + "]\n");
+				int accIndex = checkPinNoSem(accNum, pin);  //* check and get index of account in use
+				
+                if (accIndex >= 0) 							//* if returned index is not an error code
 				{
 					Thread.Sleep(1000);                     //* delay thread for demonstration purposes
 
@@ -161,14 +160,14 @@ namespace Bank_of_Kleptocracy
 		//* withdraw from account's balance
 		public int balanceWithdraw(int accNum, string pin, int amount)
 		{
-            appendLog("<BANK> Attempting to withdraw [" + amount + "] from balance of account [" + accNum + "]\n");
-
             try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
-				int accIndex = checkPinNoSem(accNum, pin); 		//* check and get index of account in use
+				int accIndex = checkPinNoSem(accNum, pin);      //* check and get index of account in use
+                
+                appendLog("<BANK> Attempting to withdraw [" + amount + "] from balance of account [" + accNum + "]\n");
 
 				if (accIndex >= 0) 								//* if returned index is not an error code
 				{
@@ -209,14 +208,14 @@ namespace Bank_of_Kleptocracy
 		//* deposit into account's balance
 		public int balanceDeposit(int accNum, string pin, int amount)
 		{
-            appendLog("<BANK> Attempting to deposit [" + amount + "] to balance of account [" + accNum + "]\n");
-
             try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
-				int accIndex = checkPinNoSem(accNum, pin); 						//* check and get index of account in use
+                appendLog("<BANK> Attempting to deposit [" + amount + "] to balance of account [" + accNum + "]\n");
+				
+                int accIndex = checkPinNoSem(accNum, pin); 						//* check and get index of account in use
 
 				if (accIndex >= 0) 												//* if returned index is not an error code
 				{
