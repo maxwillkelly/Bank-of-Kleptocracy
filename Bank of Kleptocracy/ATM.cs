@@ -554,5 +554,9 @@ namespace Bank_of_Kleptocracy
             displayMainMenu();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
