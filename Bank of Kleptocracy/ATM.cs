@@ -443,11 +443,11 @@ namespace Bank_of_Kleptocracy
         private void displayInputAmount()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.specify_withdraw);
             lblCentre.Text = "£";
             lblCentre.Visible = true;
-            lblTitle.Text = "Enter you Amount";
-            lblTitle.Visible = true;
+            //lblTitle.Text = "Enter you Amount";
+            //lblTitle.Visible = true;
         }
 
         private async void displayBalance(int returnVal, int balance)
@@ -465,11 +465,12 @@ namespace Bank_of_Kleptocracy
         private async void displayWithdraw()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
-            lblCentre.Text = "Take card";
-            lblCentre.Visible = true;
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.take_card);
+            //lblCentre.Text = "Take card";
+            //lblCentre.Visible = true;
             await Task.Delay(1500);
-            lblCentre.Text = "Take money";
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.take_cash);
+            //lblCentre.Text = "Take money";
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
@@ -487,9 +488,9 @@ namespace Bank_of_Kleptocracy
         private async void displayIncorrectPin()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
-            lblCentre.Text = "Incorrect Pin";
-            lblCentre.Visible = true;
+            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.wrong_pin);
+            //lblCentre.Text = "Incorrect Pin";
+            //lblCentre.Visible = true;
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
