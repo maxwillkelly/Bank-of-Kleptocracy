@@ -30,11 +30,6 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.cardsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertCard1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertCard2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertCard3ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ejectCardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cardsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,9 +67,9 @@
             this.lblTopRight = new System.Windows.Forms.Label();
             this.lblMiddleRight = new System.Windows.Forms.Label();
             this.lblBottomRight = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.insertCard1 = new System.Windows.Forms.Button();
+            this.insertCard3 = new System.Windows.Forms.Button();
+            this.insertCard2 = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -98,7 +93,6 @@
             // menuToolStrip
             // 
             this.menuToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cardsToolStripMenuItem1,
             this.aboutToolStripMenuItem1,
             this.helpToolStripMenuItem1,
             this.exitToolStripMenuItem});
@@ -106,49 +100,10 @@
             this.menuToolStrip.Size = new System.Drawing.Size(73, 29);
             this.menuToolStrip.Text = "Menu";
             // 
-            // cardsToolStripMenuItem1
-            // 
-            this.cardsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.insertCard1ToolStripMenuItem1,
-            this.insertCard2ToolStripMenuItem1,
-            this.insertCard3ToolStripMenuItem1,
-            this.ejectCardToolStripMenuItem});
-            this.cardsToolStripMenuItem1.Name = "cardsToolStripMenuItem1";
-            this.cardsToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
-            this.cardsToolStripMenuItem1.Text = "Cards";
-            // 
-            // insertCard1ToolStripMenuItem1
-            // 
-            this.insertCard1ToolStripMenuItem1.Name = "insertCard1ToolStripMenuItem1";
-            this.insertCard1ToolStripMenuItem1.Size = new System.Drawing.Size(215, 34);
-            this.insertCard1ToolStripMenuItem1.Text = "Insert Card 1";
-            this.insertCard1ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
-            // 
-            // insertCard2ToolStripMenuItem1
-            // 
-            this.insertCard2ToolStripMenuItem1.Name = "insertCard2ToolStripMenuItem1";
-            this.insertCard2ToolStripMenuItem1.Size = new System.Drawing.Size(215, 34);
-            this.insertCard2ToolStripMenuItem1.Text = "Insert Card 2";
-            this.insertCard2ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
-            // 
-            // insertCard3ToolStripMenuItem1
-            // 
-            this.insertCard3ToolStripMenuItem1.Name = "insertCard3ToolStripMenuItem1";
-            this.insertCard3ToolStripMenuItem1.Size = new System.Drawing.Size(215, 34);
-            this.insertCard3ToolStripMenuItem1.Text = "Insert Card 3";
-            this.insertCard3ToolStripMenuItem1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
-            // 
-            // ejectCardToolStripMenuItem
-            // 
-            this.ejectCardToolStripMenuItem.Name = "ejectCardToolStripMenuItem";
-            this.ejectCardToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
-            this.ejectCardToolStripMenuItem.Text = "Eject Card";
-            this.ejectCardToolStripMenuItem.Click += new System.EventHandler(this.ejectToolStripMenuItem_Click);
-            // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -160,7 +115,7 @@
             this.withdrawingMoneyToolStripMenuItem,
             this.viewingBalanceToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -195,7 +150,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -540,35 +495,38 @@
             this.lblBottomRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblBottomRight.Visible = false;
             // 
-            // button1
+            // insertCard1
             // 
-            this.button1.Location = new System.Drawing.Point(590, 715);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 108);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Insert Card 1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.insertCard1.Location = new System.Drawing.Point(590, 715);
+            this.insertCard1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.insertCard1.Name = "insertCard1";
+            this.insertCard1.Size = new System.Drawing.Size(122, 108);
+            this.insertCard1.TabIndex = 38;
+            this.insertCard1.Text = "Insert Card 1";
+            this.insertCard1.UseVisualStyleBackColor = true;
+            this.insertCard1.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
-            // button2
+            // insertCard3
             // 
-            this.button2.Location = new System.Drawing.Point(907, 715);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 108);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Insert Card 3";
-            this.button2.UseVisualStyleBackColor = true;
+            this.insertCard3.Location = new System.Drawing.Point(907, 715);
+            this.insertCard3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.insertCard3.Name = "insertCard3";
+            this.insertCard3.Size = new System.Drawing.Size(122, 108);
+            this.insertCard3.TabIndex = 39;
+            this.insertCard3.Text = "Insert Card 3";
+            this.insertCard3.UseVisualStyleBackColor = true;
+            this.insertCard3.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
-            // button3
+            // insertCard2
             // 
-            this.button3.Location = new System.Drawing.Point(750, 715);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 108);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Insert Card 2";
-            this.button3.UseVisualStyleBackColor = true;
+            this.insertCard2.Location = new System.Drawing.Point(750, 715);
+            this.insertCard2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.insertCard2.Name = "insertCard2";
+            this.insertCard2.Size = new System.Drawing.Size(122, 108);
+            this.insertCard2.TabIndex = 40;
+            this.insertCard2.Text = "Insert Card 2";
+            this.insertCard2.UseVisualStyleBackColor = true;
+            this.insertCard2.Click += new System.EventHandler(this.insertCardToolStripMenuItem_Click);
             // 
             // pictureBox
             // 
@@ -611,9 +569,9 @@
             this.ClientSize = new System.Drawing.Size(1158, 931);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.insertCard2);
+            this.Controls.Add(this.insertCard3);
+            this.Controls.Add(this.insertCard1);
             this.Controls.Add(this.lblBottomRight);
             this.Controls.Add(this.lblMiddleRight);
             this.Controls.Add(this.lblTopRight);
@@ -688,11 +646,6 @@
         private System.Windows.Forms.Button keypadDummy2;
         private System.Windows.Forms.Button keypadDummy1;
         private System.Windows.Forms.Button keypadDummy3;
-        private System.Windows.Forms.ToolStripMenuItem cardsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem insertCard1ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem insertCard2ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem insertCard3ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ejectCardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -708,9 +661,9 @@
         private System.Windows.Forms.ToolStripMenuItem aTMMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem withdrawingMoneyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewingBalanceToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button insertCard1;
+        private System.Windows.Forms.Button insertCard3;
+        private System.Windows.Forms.Button insertCard2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
