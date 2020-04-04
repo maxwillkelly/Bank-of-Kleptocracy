@@ -223,7 +223,29 @@ namespace Bank_of_Kleptocracy
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("PLACEHOLDER, PUT HELPFUL TEXT HERE FOR HOW TO USE THE ATM", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void insertingCardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Inserting a Card:\n\nTo insert a card, click one of the 3  'Insert Card X' buttons.\n" +
+                "\nPin Numbers: \n\nUpon inserting a card you will be asked to insert a pin number. You can find the pin numbers for all our generated accounts in the bank long form. You can then use the keypad to enter in your pin number. Using the clear button will clear the numbers you entered if you entered a wrong digit in for example" +
+                "\n\nEjecting a Card: \n\nIf you want to eject a card, push the CANCEL button on the keypad", "Cards", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void aTMMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 2 options. Withdraw cash or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void withdrawingMoneyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon clicking on withdraw cash, you will be prompted for how much money you want to withdraw. Enter the amount of money you want to withdraw using the keypad.", "Withdrawing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void viewingBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon clicking on display balance, the balance of your bank account will show for 3 seconds then it will disappear", "Viewing Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -531,5 +553,6 @@ namespace Bank_of_Kleptocracy
             await Task.Delay(3000);
             displayMainMenu();
         }
+
     }
 }
