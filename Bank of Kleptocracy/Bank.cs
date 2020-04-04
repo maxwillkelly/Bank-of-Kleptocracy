@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Bank_of_Kleptocracy
 {
+    delegate void SetLogCallback(string text);
+
 	public partial class Bank : Form
 	{
 		//* threads control
@@ -32,9 +34,22 @@ namespace Bank_of_Kleptocracy
 				sem = new Semaphore(0, 1); 		//* initialize semaphore
 				sem.Release(1); 				//* release initial semaphore
 			}
-			this.accounts = accounts; 			//* initialize array of accounts
-            logBox.Text = log;					//* log function
-        }
+			this.accounts = accounts;           //* initialize array of accounts
+            appendLog(log);                     //* log function
+		}
+
+        private void appendLog(string log)
+        {
+            if (logBox.InvokeRequired) 
+            {
+                SetLogCallback d = appendLog;
+                Invoke(d, log);
+            }
+            else
+            {
+                logBox.Text += log;
+            }
+		}
 
 		//* initialize a number of accounts with random data
 		// public void InitAccounts(int n)
@@ -68,7 +83,7 @@ namespace Bank_of_Kleptocracy
 					{
 						Thread.Sleep(1000);                 //* delay thread for demonstration purposes
 
-                        logBox.Text += "<BANK> PIN check successful\n";
+                        appendLog("<BANK> PIN check successful\n");
 
                         return i; 							//* return account index
 					}
@@ -76,14 +91,14 @@ namespace Bank_of_Kleptocracy
 					{
                         Thread.Sleep(1000);                 //* delay thread for demonstration purposes
 
-                        logBox.Text += "<BANK> PIN check unsuccessful\n";
+                        appendLog("<BANK> PIN check unsuccessful\n");
 
                         return -2; 							//* return error code (account found, but invalid pin)
 					}
 				}
 			}
 
-            logBox.Text += "<BANK> Account with account number [" + accNum + "] not found\n";
+            appendLog("<BANK> Account with account number [" + accNum + "] not found\n");
 
             return -1; 										//* return error code (account not found)
 		}
@@ -91,7 +106,7 @@ namespace Bank_of_Kleptocracy
 		//* check if account with passed account number and pin exists (first check only, when user enters their pin)
 		public int checkPin(int accNum, string pin)
 		{
-			logBox.Text += "<BANK> Attempting to check PIN\n";
+            appendLog("<BANK> Attempting to check PIN\n");
 			
 			try
 			{
@@ -110,7 +125,7 @@ namespace Bank_of_Kleptocracy
 		//* check account's balance
 		public int balanceCheck(int accNum, string pin)
 		{
-			logBox.Text += "<BANK> Attempting to check balance of account [" + accNum + "]\n";
+			appendLog("<BANK> Attempting to check balance of account [" + accNum + "]\n");
 
 			try
 			{
@@ -123,7 +138,7 @@ namespace Bank_of_Kleptocracy
 				{
 					Thread.Sleep(1000);                     //* delay thread for demonstration purposes
 
-                    logBox.Text += "<BANK> Balance of account [" + accNum + "] is: [" + accounts[accIndex].Balance + "]\n";
+                    appendLog("<BANK> Balance of account [" + accNum + "] is: [" + accounts[accIndex].Balance + "]\n");
 
                     return accounts[accIndex].Balance; 		//* account balance
 				}
@@ -131,7 +146,7 @@ namespace Bank_of_Kleptocracy
 				{
 					Thread.Sleep(1000);                     //* delay thread for demonstration purposes
 
-                    logBox.Text += "<BANK> Balance check of account [" + accNum + "] failed\n";
+                    appendLog("<BANK> Balance check of account [" + accNum + "] failed\n");
 
                     return accIndex; 						//* return error code from the account check
 				}
@@ -146,7 +161,7 @@ namespace Bank_of_Kleptocracy
 		//* withdraw from account's balance
 		public int balanceWithdraw(int accNum, string pin, int amount)
 		{
-            logBox.Text += "<BANK> Attempting to withdraw [" + amount + "] from balance of account [" + accNum + "]\n";
+            appendLog("<BANK> Attempting to withdraw [" + amount + "] from balance of account [" + accNum + "]\n");
 
             try
 			{
@@ -162,7 +177,7 @@ namespace Bank_of_Kleptocracy
                         Thread.Sleep(1000); 					//* delay thread for demonstration purposes
 						accounts[accIndex].Balance -= amount; 	//* decrement amount from account balance
 
-                        logBox.Text += "<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: " + accounts[accIndex].Balance +"\n";
+                        appendLog("<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: " + accounts[accIndex].Balance +"\n");
 
                         return 0; 								//* return success code (withdrawal goes through)
 					}
@@ -170,7 +185,7 @@ namespace Bank_of_Kleptocracy
 					{
 						Thread.Sleep(1000);                     //* delay thread for demonstration purposes
 
-                        logBox.Text += "<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance too low: [" + accounts[accIndex].Balance + "]\n";
+                        appendLog("<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance too low: [" + accounts[accIndex].Balance + "]\n");
 
                         return 1; 								//* return error code (not enough balance to withdraw)
 					}
@@ -179,7 +194,7 @@ namespace Bank_of_Kleptocracy
 				{
 					Thread.Sleep(1000);                         //* delay thread for demonstration purposes
 
-                    logBox.Text += "<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n";
+                    appendLog("<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n");
 
                     return accIndex; 							//* return error code from the account check
 				}
@@ -194,7 +209,7 @@ namespace Bank_of_Kleptocracy
 		//* deposit into account's balance
 		public int balanceDeposit(int accNum, string pin, int amount)
 		{
-            logBox.Text += "<BANK> Attempting to deposit [" + amount + "] to balance of account [" + accNum + "]\n";
+            appendLog("<BANK> Attempting to deposit [" + amount + "] to balance of account [" + accNum + "]\n");
 
             try
 			{
@@ -210,7 +225,7 @@ namespace Bank_of_Kleptocracy
 						Thread.Sleep(1000); 									//* delay thread for demonstration purposes
 						accounts[accIndex].Balance += amount; 					//* increment amount to account balance
 
-                        logBox.Text += "<BANK> Deposited [" + amount + "] to balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n";
+                        appendLog("<BANK> Deposited [" + amount + "] to balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n");
 
                         return 0; 												//* return success code (withdrawal goes through)
 					}
@@ -218,7 +233,7 @@ namespace Bank_of_Kleptocracy
 					{
 						Thread.Sleep(1000); 									//* delay thread for demonstration purposes
 
-                        logBox.Text += "<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance after deposit exceeds limit. Balance: [" + accounts[accIndex].Balance + "]\n";
+                        appendLog("<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance after deposit exceeds limit. Balance: [" + accounts[accIndex].Balance + "]\n");
 
                         return 1; 												//* return error code (deposit exceeds allowed limit)
 					}
@@ -227,7 +242,7 @@ namespace Bank_of_Kleptocracy
 				{
 					Thread.Sleep(1000);                                         //* delay thread for demonstration purposes
 
-                    logBox.Text += "<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n";
+                    appendLog("<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n");
 
                     return accIndex; 											//* return error code from the account check
 				}
