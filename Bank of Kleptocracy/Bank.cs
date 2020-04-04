@@ -22,8 +22,8 @@ namespace Bank_of_Kleptocracy
 		private Account[] accounts; 	//* array of accounts, initialised in the constructor
 		// public int BankNumber { get; }
 
+        public Bank(bool IsSemaphored, Account[] accounts, string log)
 		//* initialize this class
-		public Bank(bool IsSemaphored, Account[] accounts)
 		{
 			InitializeComponent();
 			this.isSemaphored = IsSemaphored; 	//* setting whether to use semaphores or not
@@ -33,7 +33,8 @@ namespace Bank_of_Kleptocracy
 				sem.Release(1); 				//* release initial semaphore
 			}
 			this.accounts = accounts; 			//* initialise array of accounts
-		}
+            logBox.Text = log;
+        }
 
 		//* Initialize a number of accounts with random data
 		// public void InitAccounts(int n)
