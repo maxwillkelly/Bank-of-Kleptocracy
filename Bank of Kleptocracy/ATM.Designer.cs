@@ -37,6 +37,10 @@
             this.ejectCardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cardsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aTMMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withdrawingMoneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewingBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectorTopLeft = new System.Windows.Forms.Button();
             this.selectorBottomLeft = new System.Windows.Forms.Button();
@@ -144,10 +148,43 @@
             // 
             // helpToolStripMenuItem1
             // 
+            this.helpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cardsToolStripMenuItem,
+            this.aTMMenuToolStripMenuItem,
+            this.withdrawingMoneyToolStripMenuItem,
+            this.viewingBalanceToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // cardsToolStripMenuItem
+            // 
+            this.cardsToolStripMenuItem.Name = "cardsToolStripMenuItem";
+            this.cardsToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.cardsToolStripMenuItem.Text = "Cards";
+            this.cardsToolStripMenuItem.Click += new System.EventHandler(this.insertingCardsToolStripMenuItem_Click);
+            // 
+            // aTMMenuToolStripMenuItem
+            // 
+            this.aTMMenuToolStripMenuItem.Name = "aTMMenuToolStripMenuItem";
+            this.aTMMenuToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.aTMMenuToolStripMenuItem.Text = "ATM Menu";
+            this.aTMMenuToolStripMenuItem.Click += new System.EventHandler(this.aTMMenuToolStripMenuItem_Click);
+            // 
+            // withdrawingMoneyToolStripMenuItem
+            // 
+            this.withdrawingMoneyToolStripMenuItem.Name = "withdrawingMoneyToolStripMenuItem";
+            this.withdrawingMoneyToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.withdrawingMoneyToolStripMenuItem.Text = "Withdrawing Money";
+            this.withdrawingMoneyToolStripMenuItem.Click += new System.EventHandler(this.withdrawingMoneyToolStripMenuItem_Click);
+            // 
+            // viewingBalanceToolStripMenuItem
+            // 
+            this.viewingBalanceToolStripMenuItem.Name = "viewingBalanceToolStripMenuItem";
+            this.viewingBalanceToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.viewingBalanceToolStripMenuItem.Text = "Viewing Balance";
+            this.viewingBalanceToolStripMenuItem.Click += new System.EventHandler(this.viewingBalanceToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -604,5 +641,9 @@
         private System.Windows.Forms.Label lblTopRight;
         private System.Windows.Forms.Label lblMiddleRight;
         private System.Windows.Forms.Label lblBottomRight;
+        private System.Windows.Forms.ToolStripMenuItem cardsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aTMMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem withdrawingMoneyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewingBalanceToolStripMenuItem;
     }
 }
