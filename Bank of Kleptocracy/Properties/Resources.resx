@@ -139,6 +139,9 @@
   <data name="take_card" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\take_card.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="take_card_singular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\take_card_singular.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="take_cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\take_cash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
