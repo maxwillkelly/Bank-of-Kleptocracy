@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.cardsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -554,7 +555,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Bank_of_Kleptocracy.Properties.Resources.card_hole;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(599, 610);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(439, 65);
@@ -564,7 +565,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Bank_of_Kleptocracy.Properties.Resources.cash_hole;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(599, 869);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(439, 65);
