@@ -81,8 +81,7 @@
             this.menuToolStrip});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(1158, 36);
+            this.menuStrip.Size = new System.Drawing.Size(1158, 33);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -94,7 +93,7 @@
             this.helpToolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.menuToolStrip.Name = "menuToolStrip";
-            this.menuToolStrip.Size = new System.Drawing.Size(73, 32);
+            this.menuToolStrip.Size = new System.Drawing.Size(73, 29);
             this.menuToolStrip.Text = "Menu";
             // 
             // cardsToolStripMenuItem1
@@ -105,7 +104,7 @@
             this.insertCard3ToolStripMenuItem1,
             this.ejectCardToolStripMenuItem});
             this.cardsToolStripMenuItem1.Name = "cardsToolStripMenuItem1";
-            this.cardsToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.cardsToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.cardsToolStripMenuItem1.Text = "Cards";
             // 
             // insertCard1ToolStripMenuItem1
@@ -139,21 +138,21 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
