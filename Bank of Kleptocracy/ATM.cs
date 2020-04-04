@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bank_of_Kleptocracy.Properties;
 
 namespace Bank_of_Kleptocracy
 {
@@ -188,7 +190,7 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        private void ejectToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void ejectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             switch (EjectCard())
             {
@@ -197,6 +199,9 @@ namespace Bank_of_Kleptocracy
                     break;
                 case (int) AtmStates.Success:
                     Console.WriteLine("Card ejected");
+                    displayReset();
+                    pictureBox.Image = new Bitmap(Resources.take_card_singular);
+                    await Task.Delay(1500);
                     displayInsertCard();
                     break;
                 default:
@@ -414,14 +419,14 @@ namespace Bank_of_Kleptocracy
         {
             operation = (int) AtmOperations.Default;
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.atm_startup);
+            pictureBox.Image = new Bitmap(Resources.atm_startup);
         }
 
         private void displayInputPin()
         {
             operation = (int)AtmOperations.InputPin;
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.pinNumber);
+            pictureBox.Image = new Bitmap(Resources.pinNumber);
             lblCentre.Text = "";
             lblCentre.Visible = true;
             //lblTitle.Text = "Please enter your pin";
@@ -432,7 +437,7 @@ namespace Bank_of_Kleptocracy
         {
             operation = (int) AtmOperations.InputOptions;
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.menu);
+            pictureBox.Image = new Bitmap(Resources.menu);
             lblTitle.Text = "Select an operation";
             lblTitle.Visible = true;
             lblMiddleLeft.Text = "Withdraw Cash";
@@ -443,7 +448,7 @@ namespace Bank_of_Kleptocracy
         private void displayInputAmount()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.specify_withdraw);
+            pictureBox.Image = new Bitmap(Resources.specify_withdraw);
             lblCentre.Text = "£";
             lblCentre.Visible = true;
             //lblTitle.Text = "Enter you Amount";
@@ -453,7 +458,7 @@ namespace Bank_of_Kleptocracy
         private async void displayBalance(int returnVal, int balance)
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "£" + balance.ToString("N0");
             lblCentre.Visible = true;
             lblTitle.Text = "You have";
@@ -465,20 +470,19 @@ namespace Bank_of_Kleptocracy
         private async void displayWithdraw()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.take_card);
-            //lblCentre.Text = "Take card";
-            //lblCentre.Visible = true;
+            pictureBox.Image = new Bitmap(Resources.take_card);
+            Console.WriteLine("Card Ejected");
             await Task.Delay(1500);
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.take_cash);
             //lblCentre.Text = "Take money";
+            pictureBox.Image = new Bitmap(Resources.take_cash);
             await Task.Delay(3000);
-            ejectToolStripMenuItem_Click(new object(), new EventArgs());
+            displayMainMenu();
         }
 
         private async void displayAccountNotFound()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.sky);
+            pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "Account number not found: Contact Support";
             lblCentre.Visible = true;
             await Task.Delay(3000);
@@ -488,7 +492,7 @@ namespace Bank_of_Kleptocracy
         private async void displayIncorrectPin()
         {
             displayReset();
-            pictureBox.Image = new System.Drawing.Bitmap(Properties.Resources.wrong_pin);
+            pictureBox.Image = new Bitmap(Resources.wrong_pin);
             //lblCentre.Text = "Incorrect Pin";
             //lblCentre.Visible = true;
             await Task.Delay(3000);
