@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -169,7 +169,7 @@ namespace Bank_of_Kleptocracy
          */
         private void insertCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var item = (ToolStripMenuItem) sender;
+            var item = (Button) sender;
             // Determines which card is being inserted
             var cardNum = item.Name[10] - '0' - 1;
             switch (InsertCard(cardNum))
@@ -551,5 +551,9 @@ namespace Bank_of_Kleptocracy
             displayMainMenu();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
