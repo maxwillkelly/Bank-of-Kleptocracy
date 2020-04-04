@@ -19,24 +19,24 @@ namespace Bank_of_Kleptocracy
 		private Semaphore sem;
 
 		//* vars
-		private Account[] accounts; 	//* array of accounts, initialised in the constructor
-		// public int BankNumber { get; }
+		private Account[] accounts;     //* array of accounts, initialized in the constructor
+                                        // public int BankNumber { get; }
 
+        //* initialize this class
         public Bank(bool IsSemaphored, Account[] accounts, string log)
-		//* initialize this class
 		{
 			InitializeComponent();
 			this.isSemaphored = IsSemaphored; 	//* setting whether to use semaphores or not
 			if (isSemaphored)
 			{
-				sem = new Semaphore(0, 1); 		//* initialise semaphore
+				sem = new Semaphore(0, 1); 		//* initialize semaphore
 				sem.Release(1); 				//* release initial semaphore
 			}
-			this.accounts = accounts; 			//* initialise array of accounts
-            logBox.Text = log;
+			this.accounts = accounts; 			//* initialize array of accounts
+            logBox.Text = log;					//* log function
         }
 
-		//* Initialize a number of accounts with random data
+		//* initialize a number of accounts with random data
 		// public void InitAccounts(int n)
 		// {
 		// 	try
@@ -66,22 +66,33 @@ namespace Bank_of_Kleptocracy
 				{
 					if (pin == accounts[i].Pin) 			//* if the passed pin also fits
 					{
-						Thread.Sleep(1000); 				//* delay thread for demonstration purposes
-						return i; 							//* return account index
+						Thread.Sleep(1000);                 //* delay thread for demonstration purposes
+
+                        logBox.Text += "<BANK> PIN check successful\n";
+
+                        return i; 							//* return account index
 					}
 					else
 					{
-						Thread.Sleep(1000); 				//* delay thread for demonstration purposes
-						return -2; 							//* return error code (account found, but invalid pin)
+                        Thread.Sleep(1000);                 //* delay thread for demonstration purposes
+
+                        logBox.Text += "<BANK> PIN check unsuccessful\n";
+
+                        return -2; 							//* return error code (account found, but invalid pin)
 					}
 				}
 			}
-			return -1; 										//* return error code (account not found)
+
+            logBox.Text += "<BANK> Account with account number [" + accNum + "] not found\n";
+
+            return -1; 										//* return error code (account not found)
 		}
 
 		//* check if account with passed account number and pin exists (first check only, when user enters their pin)
 		public int checkPin(int accNum, string pin)
 		{
+			logBox.Text += "<BANK> Attempting to check PIN\n";
+			
 			try
 			{
 				if (isSemaphored)
@@ -99,21 +110,30 @@ namespace Bank_of_Kleptocracy
 		//* check account's balance
 		public int balanceCheck(int accNum, string pin)
 		{
+			logBox.Text += "<BANK> Attempting to check balance of account [" + accNum + "]\n";
+
 			try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
 				int accIndex = checkPinNoSem(accNum, pin); 	//* check and get index of account in use
+
 				if (accIndex >= 0) 							//* if returned index is not an error code
 				{
-					Thread.Sleep(1000); 					//* delay thread for demonstration purposes
-					return accounts[accIndex].Balance; 		//* account balance
+					Thread.Sleep(1000);                     //* delay thread for demonstration purposes
+
+                    logBox.Text += "<BANK> Balance of account [" + accNum + "] is: [" + accounts[accIndex].Balance + "]\n";
+
+                    return accounts[accIndex].Balance; 		//* account balance
 				}
 				else
 				{
-					Thread.Sleep(1000); 					//* delay thread for demonstration purposes
-					return accIndex; 						//* return error code from the account check
+					Thread.Sleep(1000);                     //* delay thread for demonstration purposes
+
+                    logBox.Text += "<BANK> Balance check of account [" + accNum + "] failed\n";
+
+                    return accIndex; 						//* return error code from the account check
 				}
 			}
 			finally
@@ -126,30 +146,42 @@ namespace Bank_of_Kleptocracy
 		//* withdraw from account's balance
 		public int balanceWithdraw(int accNum, string pin, int amount)
 		{
-			try
+            logBox.Text += "<BANK> Attempting to withdraw [" + amount + "] from balance of account [" + accNum + "]\n";
+
+            try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
 				int accIndex = checkPinNoSem(accNum, pin); 		//* check and get index of account in use
+
 				if (accIndex >= 0) 								//* if returned index is not an error code
 				{
 					if (amount <= accounts[accIndex].Balance) 	//* if amount to withdraw is less or equal to account balance
 					{
-						Thread.Sleep(1000); 					//* delay thread for demonstration purposes
+                        Thread.Sleep(1000); 					//* delay thread for demonstration purposes
 						accounts[accIndex].Balance -= amount; 	//* decrement amount from account balance
-						return 0; 								//* return success code (withdrawal goes through)
+
+                        logBox.Text += "<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: " + accounts[accIndex].Balance +"\n";
+
+                        return 0; 								//* return success code (withdrawal goes through)
 					}
 					else
 					{
-						Thread.Sleep(1000); 					//* delay thread for demonstration purposes
-						return 1; 								//* return error code (not enough balance to withdraw)
+						Thread.Sleep(1000);                     //* delay thread for demonstration purposes
+
+                        logBox.Text += "<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance too low: [" + accounts[accIndex].Balance + "]\n";
+
+                        return 1; 								//* return error code (not enough balance to withdraw)
 					}
 				}
 				else
 				{
-					Thread.Sleep(1000); 						//* delay thread for demonstration purposes
-					return accIndex; 							//* return error code from the account check
+					Thread.Sleep(1000);                         //* delay thread for demonstration purposes
+
+                    logBox.Text += "<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n";
+
+                    return accIndex; 							//* return error code from the account check
 				}
 			}
 			finally
@@ -162,30 +194,42 @@ namespace Bank_of_Kleptocracy
 		//* deposit into account's balance
 		public int balanceDeposit(int accNum, string pin, int amount)
 		{
-			try
+            logBox.Text += "<BANK> Attempting to deposit [" + amount + "] to balance of account [" + accNum + "]\n";
+
+            try
 			{
 				if (isSemaphored)
 					sem.WaitOne();
 
 				int accIndex = checkPinNoSem(accNum, pin); 						//* check and get index of account in use
+
 				if (accIndex >= 0) 												//* if returned index is not an error code
 				{
 					if (accounts[accIndex].Balance + amount <= Int32.MaxValue) 	//* if account balance + amount is less or equal to max of INT32 (2,147,483,647) //// Could have made some workarounds but that's not the point of this project
 					{
 						Thread.Sleep(1000); 									//* delay thread for demonstration purposes
 						accounts[accIndex].Balance += amount; 					//* increment amount to account balance
-						return 0; 												//* return success code (withdrawal goes through)
+
+                        logBox.Text += "<BANK> Deposited [" + amount + "] to balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n";
+
+                        return 0; 												//* return success code (withdrawal goes through)
 					}
 					else
 					{
 						Thread.Sleep(1000); 									//* delay thread for demonstration purposes
-						return 1; 												//* return error code (deposit exceeds allowed limit)
+
+                        logBox.Text += "<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance after deposit exceeds limit. Balance: [" + accounts[accIndex].Balance + "]\n";
+
+                        return 1; 												//* return error code (deposit exceeds allowed limit)
 					}
 				}
 				else
 				{
-					Thread.Sleep(1000); 										//* delay thread for demonstration purposes
-					return accIndex; 											//* return error code from the account check
+					Thread.Sleep(1000);                                         //* delay thread for demonstration purposes
+
+                    logBox.Text += "<BANK> Deposit of [" + amount + "] to balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n";
+
+                    return accIndex; 											//* return error code from the account check
 				}
 			}
 			finally
