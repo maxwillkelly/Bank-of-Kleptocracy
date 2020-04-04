@@ -20,7 +20,8 @@ namespace Bank_of_Kleptocracy
         CardInserted,
         CardNotInitialised,
         CardNotInserted,
-        AccountNotFound
+        AccountNotFound,
+        InsufficientFunds
     }
 
     public enum AtmOperations
@@ -128,6 +129,7 @@ namespace Bank_of_Kleptocracy
                 return (int) AtmStates.CardNotInserted;
 
             cardInserted = null;
+            pin = "";
             return (int) AtmStates.Success;
         }
 
@@ -137,13 +139,17 @@ namespace Bank_of_Kleptocracy
                 return (int) AtmStates.CardNotInserted;
 
             var withdraw = bank.balanceWithdraw(cardInserted.AccountNumber, pin, amount);
+            
             switch (withdraw)
             {
+                case 1:
+                    return (int) AtmStates.InsufficientFunds;
                 case -1:
                     return (int) AtmStates.AccountNotFound;
                 case -2:
                     return (int) AtmStates.IncorrectPin;
             }
+
             return (int) AtmStates.Success;
         }
 
@@ -217,7 +223,29 @@ namespace Bank_of_Kleptocracy
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("PLACEHOLDER, PUT HELPFUL TEXT HERE FOR HOW TO USE THE ATM", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void insertingCardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Inserting a Card:\n\nTo insert a card, click one of the 3  'Insert Card X' buttons.\n" +
+                "\nPin Numbers: \n\nUpon inserting a card you will be asked to insert a pin number. You can find the pin numbers for all our generated accounts in the bank long form. You can then use the keypad to enter in your pin number. Using the clear button will clear the numbers you entered if you entered a wrong digit in for example" +
+                "\n\nEjecting a Card: \n\nIf you want to eject a card, push the CANCEL button on the keypad", "Cards", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void aTMMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 2 options. Withdraw cash or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void withdrawingMoneyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon clicking on withdraw cash, you will be prompted for how much money you want to withdraw. Enter the amount of money you want to withdraw using the keypad.", "Withdrawing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void viewingBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var popup = MessageBox.Show("Upon clicking on display balance, the balance of your bank account will show for 3 seconds then it will disappear", "Viewing Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -307,15 +335,9 @@ namespace Bank_of_Kleptocracy
             {
                 case (int) AtmOperations.InputPin:
                     processCheckPin();
-
                     break;
                 case (int) AtmOperations.InputWithdraw:
-                    var amountInt = int.Parse(amount);
-                    var returnVal = Withdraw(amountInt);
-                    if (returnVal == (int) AtmStates.Success)
-                    {
-                        displayWithdraw();
-                    }
+                    processWithdraw();
                     break;
                 case (int) AtmOperations.Default:
                     Console.WriteLine("Default Operation");
@@ -369,6 +391,28 @@ namespace Bank_of_Kleptocracy
                     displayIncorrectPin();
                     break;
                 default:
+                    break;
+            }
+        }
+
+        private void processWithdraw()
+        {
+            var amountInt = int.Parse(amount);
+            var returnVal = Withdraw(amountInt);
+            amount = "";
+            switch (returnVal)
+            {
+                case (int) AtmStates.Success:
+                    displayWithdraw();
+                    break;
+                case (int) AtmStates.InsufficientFunds:
+                    displayInsufficientFunds();
+                    break;
+                case (int) AtmStates.AccountNotFound:
+                    displayAccountNotFound();
+                    break;
+                case (int) AtmStates.IncorrectPin:
+                    displayIncorrectPin();
                     break;
             }
         }
@@ -457,6 +501,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayBalance(int returnVal, int balance)
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "£" + balance.ToString("N0");
@@ -469,6 +514,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayWithdraw()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.take_card);
             Console.WriteLine("Card Ejected");
@@ -481,6 +527,7 @@ namespace Bank_of_Kleptocracy
 
         private async void displayAccountNotFound()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.sky);
             lblCentre.Text = "Account number not found: Contact Support";
@@ -491,12 +538,21 @@ namespace Bank_of_Kleptocracy
 
         private async void displayIncorrectPin()
         {
+            operation = (int)AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.wrong_pin);
-            //lblCentre.Text = "Incorrect Pin";
-            //lblCentre.Visible = true;
             await Task.Delay(3000);
             ejectToolStripMenuItem_Click(new object(), new EventArgs());
         }
+
+        private async void displayInsufficientFunds()
+        {
+            operation = (int)AtmOperations.Default;
+            displayReset();
+            pictureBox.Image = new Bitmap(Resources.sky);
+            await Task.Delay(3000);
+            displayMainMenu();
+        }
+
     }
 }
