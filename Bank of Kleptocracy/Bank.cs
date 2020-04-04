@@ -176,7 +176,7 @@ namespace Bank_of_Kleptocracy
                         Thread.Sleep(1000); 					//* delay thread for demonstration purposes
 						accounts[accIndex].Balance -= amount; 	//* decrement amount from account balance
 
-                        appendLog("<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: " + accounts[accIndex].Balance +"\n");
+                        appendLog("<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance +"]\n");
 
                         return 0; 								//* return success code (withdrawal goes through)
 					}
