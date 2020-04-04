@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.cardsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,12 +72,12 @@
             this.lblTopRight = new System.Windows.Forms.Label();
             this.lblMiddleRight = new System.Windows.Forms.Label();
             this.lblBottomRight = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -268,7 +267,7 @@
             // 
             // keypad1
             // 
-            this.keypad1.Location = new System.Drawing.Point(160, 610);
+            this.keypad1.Location = new System.Drawing.Point(151, 610);
             this.keypad1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad1.Name = "keypad1";
             this.keypad1.Size = new System.Drawing.Size(86, 65);
@@ -279,7 +278,7 @@
             // 
             // keypad2
             // 
-            this.keypad2.Location = new System.Drawing.Point(264, 610);
+            this.keypad2.Location = new System.Drawing.Point(255, 610);
             this.keypad2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad2.Name = "keypad2";
             this.keypad2.Size = new System.Drawing.Size(86, 65);
@@ -290,7 +289,7 @@
             // 
             // keypad3
             // 
-            this.keypad3.Location = new System.Drawing.Point(363, 610);
+            this.keypad3.Location = new System.Drawing.Point(354, 610);
             this.keypad3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad3.Name = "keypad3";
             this.keypad3.Size = new System.Drawing.Size(86, 65);
@@ -302,7 +301,7 @@
             // keypadCancel
             // 
             this.keypadCancel.BackColor = System.Drawing.Color.Red;
-            this.keypadCancel.Location = new System.Drawing.Point(466, 610);
+            this.keypadCancel.Location = new System.Drawing.Point(457, 610);
             this.keypadCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadCancel.Name = "keypadCancel";
             this.keypadCancel.Size = new System.Drawing.Size(86, 65);
@@ -313,7 +312,7 @@
             // 
             // keypad4
             // 
-            this.keypad4.Location = new System.Drawing.Point(160, 693);
+            this.keypad4.Location = new System.Drawing.Point(151, 693);
             this.keypad4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad4.Name = "keypad4";
             this.keypad4.Size = new System.Drawing.Size(86, 65);
@@ -325,7 +324,7 @@
             // keypadClear
             // 
             this.keypadClear.BackColor = System.Drawing.Color.Yellow;
-            this.keypadClear.Location = new System.Drawing.Point(466, 693);
+            this.keypadClear.Location = new System.Drawing.Point(457, 693);
             this.keypadClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadClear.Name = "keypadClear";
             this.keypadClear.Size = new System.Drawing.Size(86, 65);
@@ -336,7 +335,7 @@
             // 
             // keypad6
             // 
-            this.keypad6.Location = new System.Drawing.Point(363, 693);
+            this.keypad6.Location = new System.Drawing.Point(354, 693);
             this.keypad6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad6.Name = "keypad6";
             this.keypad6.Size = new System.Drawing.Size(86, 65);
@@ -347,7 +346,7 @@
             // 
             // keypad5
             // 
-            this.keypad5.Location = new System.Drawing.Point(264, 693);
+            this.keypad5.Location = new System.Drawing.Point(255, 693);
             this.keypad5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad5.Name = "keypad5";
             this.keypad5.Size = new System.Drawing.Size(86, 65);
@@ -358,7 +357,7 @@
             // 
             // keypad0
             // 
-            this.keypad0.Location = new System.Drawing.Point(264, 869);
+            this.keypad0.Location = new System.Drawing.Point(255, 869);
             this.keypad0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad0.Name = "keypad0";
             this.keypad0.Size = new System.Drawing.Size(86, 65);
@@ -369,7 +368,7 @@
             // 
             // keypad9
             // 
-            this.keypad9.Location = new System.Drawing.Point(363, 780);
+            this.keypad9.Location = new System.Drawing.Point(354, 780);
             this.keypad9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad9.Name = "keypad9";
             this.keypad9.Size = new System.Drawing.Size(86, 65);
@@ -380,7 +379,7 @@
             // 
             // keypad8
             // 
-            this.keypad8.Location = new System.Drawing.Point(264, 780);
+            this.keypad8.Location = new System.Drawing.Point(255, 780);
             this.keypad8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad8.Name = "keypad8";
             this.keypad8.Size = new System.Drawing.Size(86, 65);
@@ -391,7 +390,7 @@
             // 
             // keypad7
             // 
-            this.keypad7.Location = new System.Drawing.Point(160, 780);
+            this.keypad7.Location = new System.Drawing.Point(151, 780);
             this.keypad7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypad7.Name = "keypad7";
             this.keypad7.Size = new System.Drawing.Size(86, 65);
@@ -403,7 +402,7 @@
             // keypadEnter
             // 
             this.keypadEnter.BackColor = System.Drawing.Color.Lime;
-            this.keypadEnter.Location = new System.Drawing.Point(466, 780);
+            this.keypadEnter.Location = new System.Drawing.Point(457, 780);
             this.keypadEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadEnter.Name = "keypadEnter";
             this.keypadEnter.Size = new System.Drawing.Size(86, 65);
@@ -414,7 +413,7 @@
             // 
             // keypadDummy2
             // 
-            this.keypadDummy2.Location = new System.Drawing.Point(363, 869);
+            this.keypadDummy2.Location = new System.Drawing.Point(354, 869);
             this.keypadDummy2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadDummy2.Name = "keypadDummy2";
             this.keypadDummy2.Size = new System.Drawing.Size(86, 65);
@@ -423,7 +422,7 @@
             // 
             // keypadDummy1
             // 
-            this.keypadDummy1.Location = new System.Drawing.Point(160, 869);
+            this.keypadDummy1.Location = new System.Drawing.Point(151, 869);
             this.keypadDummy1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadDummy1.Name = "keypadDummy1";
             this.keypadDummy1.Size = new System.Drawing.Size(86, 65);
@@ -432,7 +431,7 @@
             // 
             // keypadDummy3
             // 
-            this.keypadDummy3.Location = new System.Drawing.Point(466, 869);
+            this.keypadDummy3.Location = new System.Drawing.Point(457, 869);
             this.keypadDummy3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.keypadDummy3.Name = "keypadDummy3";
             this.keypadDummy3.Size = new System.Drawing.Size(86, 65);
@@ -541,6 +540,36 @@
             this.lblBottomRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblBottomRight.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(590, 715);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 108);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Insert Card 1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(907, 715);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 108);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Insert Card 3";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(750, 715);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(122, 108);
+            this.button3.TabIndex = 40;
+            this.button3.Text = "Insert Card 2";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -555,53 +584,23 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(599, 610);
+            this.pictureBox1.Image = global::Bank_of_Kleptocracy.Properties.Resources.card_hole;
+            this.pictureBox1.Location = new System.Drawing.Point(590, 610);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(439, 65);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(599, 869);
+            this.pictureBox2.Image = global::Bank_of_Kleptocracy.Properties.Resources.cash_hole;
+            this.pictureBox2.Location = new System.Drawing.Point(590, 869);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(439, 65);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabIndex = 42;
             this.pictureBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(599, 715);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 108);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Insert Card 1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(916, 715);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 108);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Insert Card 3";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(759, 715);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 108);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Insert Card 2";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // ATM
             // 
@@ -610,11 +609,11 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1158, 931);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblBottomRight);
             this.Controls.Add(this.lblMiddleRight);
             this.Controls.Add(this.lblTopRight);
@@ -709,10 +708,10 @@
         private System.Windows.Forms.ToolStripMenuItem aTMMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem withdrawingMoneyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewingBalanceToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
