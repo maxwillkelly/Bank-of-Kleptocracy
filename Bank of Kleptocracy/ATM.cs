@@ -473,8 +473,6 @@ namespace Bank_of_Kleptocracy
             pictureBox.Image = new Bitmap(Resources.pinNumber);
             lblCentre.Text = "";
             lblCentre.Visible = true;
-            //lblTitle.Text = "Please enter your pin";
-            //lblTitle.Visible = true;
         }
 
         private void displayMainMenu()
@@ -519,7 +517,6 @@ namespace Bank_of_Kleptocracy
             pictureBox.Image = new Bitmap(Resources.take_card);
             Console.WriteLine("Card Ejected");
             await Task.Delay(1500);
-            //lblCentre.Text = "Take money";
             pictureBox.Image = new Bitmap(Resources.take_cash);
             await Task.Delay(3000);
             displayMainMenu();
@@ -549,7 +546,7 @@ namespace Bank_of_Kleptocracy
         {
             operation = (int)AtmOperations.Default;
             displayReset();
-            pictureBox.Image = new Bitmap(Resources.sky);
+            pictureBox.Image = new Bitmap(Resources.insufficient);
             await Task.Delay(3000);
             displayMainMenu();
         }
