@@ -128,6 +128,7 @@ namespace Bank_of_Kleptocracy
                 return (int) AtmStates.CardNotInserted;
 
             cardInserted = null;
+            pin = "";
             return (int) AtmStates.Success;
         }
 
