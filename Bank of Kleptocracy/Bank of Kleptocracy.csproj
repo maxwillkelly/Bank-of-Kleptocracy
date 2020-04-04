@@ -130,5 +130,8 @@
   <ItemGroup>
     <None Include="Resources\specify_withdraw.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\take_card_singular.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
