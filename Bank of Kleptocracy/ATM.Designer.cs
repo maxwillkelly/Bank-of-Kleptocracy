@@ -119,7 +119,6 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
             this.helpToolStripMenuItem1.Text = "Help";
-            this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // cardsToolStripMenuItem
             // 
