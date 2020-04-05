@@ -149,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\too_large.jpg" />
+    <None Include="Resources\deposit.jpg" />
+    <None Include="Resources\deposit_complete.jpg" />
     <None Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

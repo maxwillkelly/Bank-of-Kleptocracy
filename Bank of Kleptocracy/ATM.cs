@@ -265,13 +265,13 @@ namespace Bank_of_Kleptocracy
         // ATM Menu help
         private void aTMMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 2 options. Withdraw cash or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 3 options. Withdraw cash, Deposit or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // Withdrawing Money help
         private void withdrawingMoneyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Upon clicking on withdraw cash, you will be prompted for how much money you want to withdraw. Enter the amount of money you want to withdraw using the keypad.", "Withdrawing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           MessageBox.Show("Upon clicking on either withdraw or deposit cash, you will be prompted for how much money you want to withdraw/deposit. Enter the amount of money you want to withdraw/deposit using the keypad.", "Withdrawing/Depositing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // Viewing Balance help
