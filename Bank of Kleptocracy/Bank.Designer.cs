@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bank));
             this.logBox = new System.Windows.Forms.RichTextBox();
             this.lblLog = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.lblLog.AutoSize = true;
             this.lblLog.Location = new System.Drawing.Point(14, 11);
             this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(37, 20);
+            this.lblLog.Size = new System.Drawing.Size(36, 20);
             this.lblLog.TabIndex = 1;
             this.lblLog.Text = "Log";
             // 
@@ -61,6 +62,7 @@
             this.ClientSize = new System.Drawing.Size(1060, 841);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.logBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Bank";
             this.Text = "Kleptocratic Mission Control ";
