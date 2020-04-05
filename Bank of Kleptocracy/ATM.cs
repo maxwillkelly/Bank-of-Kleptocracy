@@ -188,7 +188,7 @@ namespace Bank_of_Kleptocracy
         // Runs when a user clicks an "Insert a card" button 
         private void insertCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var item = (ToolStripMenuItem) sender;
+            var item = (Button) sender;
             // Determines which card is attempting to be inserted
             var cardNum = item.Name[10] - '0' - 1;
 
