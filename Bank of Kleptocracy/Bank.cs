@@ -173,7 +173,7 @@ namespace Bank_of_Kleptocracy
 				{
 					if (amount <= accounts[accIndex].Balance) 	//* if amount to withdraw is less or equal to account balance
 					{
-                        Thread.Sleep(1000); 					//* delay thread for demonstration purposes
+                        Thread.Sleep(4000); 					//* delay thread for demonstration purposes
 						accounts[accIndex].Balance -= amount; 	//* decrement amount from account balance
 
                         appendLog("<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: " + accounts[accIndex].Balance +"\n");
@@ -182,7 +182,7 @@ namespace Bank_of_Kleptocracy
 					}
 					else
 					{
-						Thread.Sleep(1000);                     //* delay thread for demonstration purposes
+						Thread.Sleep(4000);                     //* delay thread for demonstration purposes
 
                         appendLog("<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance too low: [" + accounts[accIndex].Balance + "]\n");
 
@@ -191,7 +191,7 @@ namespace Bank_of_Kleptocracy
 				}
 				else
 				{
-					Thread.Sleep(1000);                         //* delay thread for demonstration purposes
+					Thread.Sleep(4000);                         //* delay thread for demonstration purposes
 
                     appendLog("<BANK> Withdrawal of [" + amount + "] from balance of account [" + accNum + "] failed. Balance: [" + accounts[accIndex].Balance + "]\n");
 
