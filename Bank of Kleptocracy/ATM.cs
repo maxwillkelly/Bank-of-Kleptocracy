@@ -10,11 +10,10 @@ using Bank_of_Kleptocracy.Properties;
 
 namespace Bank_of_Kleptocracy
 {
+    // Returned by methods to indicate success or failure
     public enum AtmStates
     {
         Success,
-        NoActiveAccount,
-        NoCardInserted,
         InvalidCardIndex,
         IncorrectPin,
         CardInserted,
@@ -24,6 +23,7 @@ namespace Bank_of_Kleptocracy
         InsufficientFunds
     }
 
+    // Used by button to determine what the ATM is currently doing
     public enum AtmOperations
     {
         Default,
@@ -35,16 +35,17 @@ namespace Bank_of_Kleptocracy
 
     public partial class ATM : Form
     {
+
         private Bank bank;
         private Card cardInserted;
         private List<Card> cards;
         private Label[] labels;
         
-        // Stores the user's inputted pin
+        // User's inputted pin
         private string pin;
-        // Stores the user's amount selected using any operation in currency
+        // User's amount selected using any operation in currency
         private string amount = "";
-        // Stores the Atm operation we are currently using
+        // Atm operation we are currently doing
         private int operation = (int) AtmOperations.Default;
         
 
@@ -58,22 +59,28 @@ namespace Bank_of_Kleptocracy
             {
                 lbl.Parent = pictureBox;
             }
+
+            // Shows insert card page on ATM
             displayInsertCard();
             // Initialises variables
             this.bank = bank;
             cards = new List<Card>();
         }
 
+        // Creates cards to use to access a bank account
         public void CreateCard(int accountNumber)
         {
             cards.Add(new Card(accountNumber));
         }
 
         /*
-         * Background functionality
+         * Background functionality - no UI code
          */
+
+        // Inserts a card into the ATM based on its position in the cards list
         public int InsertCard(int cardIndex)
         {
+            // Checks for errors
             if (cardIndex >= cards.Count)
                 return (int) AtmStates.InvalidCardIndex;
 
@@ -84,18 +91,17 @@ namespace Bank_of_Kleptocracy
             if (card.GetType() != typeof(Card))
                 return (int) AtmStates.CardNotInitialised;
 
-            /*var account = FindAccount(card.AccountNumber, card.BankNumber);
-            if (account == null)
-                return (int) AtmStates.AccountNotFound;
-
-            activeAccount = account;*/
+            // Stores inserted card
             cardInserted = card;
             return (int) AtmStates.Success;
         }
 
+        // Retrieves an account's balance from the bank
         public int CheckBalance(out int balance)
         {
+            // Extracts balance from bank
             balance = bank.balanceCheck(cardInserted.AccountNumber, pin);
+            // Interprets balance output
             switch (balance)
             {
                 case -1:
@@ -106,13 +112,17 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
+        // Checks if a pin is correct
         public int CheckPin(string pin)
         {
             if (cardInserted == null)
                 return (int) AtmStates.CardNotInserted;
+
             this.pin = pin;
 
+            // Extracts the index of the appropriate account in the bank
             var accountIndex = bank.checkPin(cardInserted.AccountNumber, pin);
+            // Processes output
             switch (accountIndex)
             {
                 case -1:
@@ -123,6 +133,7 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
+        // Ejects a card from the ATM
         public int EjectCard()
         {
             if (cardInserted == null)
@@ -133,13 +144,16 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
+        // Withdraws money from an account
         public int Withdraw(int amount)
         {
             if (cardInserted == null)
                 return (int) AtmStates.CardNotInserted;
 
+            // Withdraws money from the account
             var withdraw = bank.balanceWithdraw(cardInserted.AccountNumber, pin, amount);
             
+            // Processes output
             switch (withdraw)
             {
                 case 1:
@@ -153,6 +167,8 @@ namespace Bank_of_Kleptocracy
             return (int) AtmStates.Success;
         }
 
+        // Not used
+        // Prints information stored on the stored cards
         private void PrintCards()
         {
             for (var cardIndex = 0; cardIndex < cards.Count; cardIndex++)
@@ -167,11 +183,15 @@ namespace Bank_of_Kleptocracy
         /*
          * User Interface
          */
+         
+        // Runs when a user clicks an "Insert a card" button 
         private void insertCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var item = (ToolStripMenuItem) sender;
-            // Determines which card is being inserted
+            // Determines which card is attempting to be inserted
             var cardNum = item.Name[10] - '0' - 1;
+
+            // Attempts to insert card and displays an appropriate MessageBox if there are errors
             switch (InsertCard(cardNum))
             {
                 case (int) AtmStates.InvalidCardIndex:
@@ -187,7 +207,7 @@ namespace Bank_of_Kleptocracy
                     MessageBox.Show("Account not found");
                     break;
                 case (int) AtmStates.Success:
-                    Console.WriteLine("Card inserted");
+                    // Allows the user to input a pin
                     displayInputPin();
                     break;
                 default:
@@ -196,19 +216,18 @@ namespace Bank_of_Kleptocracy
             }
         }
 
-        private async void ejectToolStripMenuItem_Click(object sender, EventArgs e)
+        // Runs when a user clicks the "Eject card" button 
+        private void ejectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Attempts to eject card  and displays an appropriate MessageBox if there are errors
             switch (EjectCard())
             {
                 case (int) AtmStates.CardNotInserted:
                     MessageBox.Show("No card inserted");
                     break;
                 case (int) AtmStates.Success:
-                    Console.WriteLine("Card ejected");
-                    displayReset();
-                    pictureBox.Image = new Bitmap(Resources.take_card_singular);
-                    await Task.Delay(1500);
-                    displayInsertCard();
+                    // Asks the user to take their card and returns to start screen
+                    displayEjectCard();
                     break;
                 default:
                     MessageBox.Show("Generic Error occurred on card ejection");
@@ -216,38 +235,39 @@ namespace Bank_of_Kleptocracy
             }
         }
 
+        // About dialog
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("ATM Simulator \n\nCreated and programmed by:\n\nMax Kelly \nTadas Saltenis \nMax Fyall \n\nThank you", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("ATM Simulator \n\nCreated and programmed by:\n\nMax Kelly \nTadas Saltenis \nMax Fyall \n\nThank you", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // Cards help
         private void insertingCardsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("Inserting a Card:\n\nTo insert a card, click one of the 3  'Insert Card X' buttons.\n" +
+            MessageBox.Show("Inserting a Card:\n\nTo insert a card, click one of the 3  'Insert Card X' buttons.\n" +
                 "\nPin Numbers: \n\nUpon inserting a card you will be asked to insert a pin number. You can find the pin numbers for all our generated accounts in the bank long form. You can then use the keypad to enter in your pin number. Using the clear button will clear the numbers you entered if you entered a wrong digit in for example" +
                 "\n\nEjecting a Card: \n\nIf you want to eject a card, push the CANCEL button on the keypad", "Cards", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // ATM Menu help
         private void aTMMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 2 options. Withdraw cash or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Upon being loaded into the bank menu in the atm you can select 1 of 2 options. Withdraw cash or Display balance. Use the Buttons next to these options to select them." ,"ATM Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Withdrawing Money help
         private void withdrawingMoneyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("Upon clicking on withdraw cash, you will be prompted for how much money you want to withdraw. Enter the amount of money you want to withdraw using the keypad.", "Withdrawing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Upon clicking on withdraw cash, you will be prompted for how much money you want to withdraw. Enter the amount of money you want to withdraw using the keypad.", "Withdrawing Money", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Viewing Balance help
         private void viewingBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var popup = MessageBox.Show("Upon clicking on display balance, the balance of your bank account will show for 3 seconds then it will disappear", "Viewing Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Upon clicking on display balance, the balance of your bank account will show for 3 seconds then it will disappear", "Viewing Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Exit dialog
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var exit = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -255,6 +275,7 @@ namespace Bank_of_Kleptocracy
                 Application.Exit();
         }
 
+        // Runs when the user clicks a number on the keypad e.g. 1, 4, 9
         private void keypad_Click(object sender, EventArgs e)
         {
             var keyButton = (Button) sender;
@@ -464,6 +485,13 @@ namespace Bank_of_Kleptocracy
             operation = (int) AtmOperations.Default;
             displayReset();
             pictureBox.Image = new Bitmap(Resources.atm_startup);
+        }
+
+        private async void displayEjectCard() {
+            displayReset();
+            pictureBox.Image = new Bitmap(Resources.take_card_singular);
+            await Task.Delay(1500);
+            displayInsertCard();
         }
 
         private void displayInputPin()
