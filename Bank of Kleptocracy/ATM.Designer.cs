@@ -105,7 +105,7 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -117,41 +117,41 @@
             this.withdrawingMoneyToolStripMenuItem,
             this.viewingBalanceToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(164, 34);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // cardsToolStripMenuItem
             // 
             this.cardsToolStripMenuItem.Name = "cardsToolStripMenuItem";
-            this.cardsToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.cardsToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.cardsToolStripMenuItem.Text = "Cards";
             this.cardsToolStripMenuItem.Click += new System.EventHandler(this.insertingCardsToolStripMenuItem_Click);
             // 
             // aTMMenuToolStripMenuItem
             // 
             this.aTMMenuToolStripMenuItem.Name = "aTMMenuToolStripMenuItem";
-            this.aTMMenuToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.aTMMenuToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.aTMMenuToolStripMenuItem.Text = "ATM Menu";
             this.aTMMenuToolStripMenuItem.Click += new System.EventHandler(this.aTMMenuToolStripMenuItem_Click);
             // 
             // withdrawingMoneyToolStripMenuItem
             // 
             this.withdrawingMoneyToolStripMenuItem.Name = "withdrawingMoneyToolStripMenuItem";
-            this.withdrawingMoneyToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
-            this.withdrawingMoneyToolStripMenuItem.Text = "Withdrawing Money";
+            this.withdrawingMoneyToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
+            this.withdrawingMoneyToolStripMenuItem.Text = "Withdrawing/Depositing Money";
             this.withdrawingMoneyToolStripMenuItem.Click += new System.EventHandler(this.withdrawingMoneyToolStripMenuItem_Click);
             // 
             // viewingBalanceToolStripMenuItem
             // 
             this.viewingBalanceToolStripMenuItem.Name = "viewingBalanceToolStripMenuItem";
-            this.viewingBalanceToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.viewingBalanceToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.viewingBalanceToolStripMenuItem.Text = "Viewing Balance";
             this.viewingBalanceToolStripMenuItem.Click += new System.EventHandler(this.viewingBalanceToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
