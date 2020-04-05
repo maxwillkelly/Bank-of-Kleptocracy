@@ -203,6 +203,16 @@ namespace Bank_of_Kleptocracy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap too_large {
+            get {
+                object obj = ResourceManager.GetObject("too_large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wrong_pin {
             get {
                 object obj = ResourceManager.GetObject("wrong_pin", resourceCulture);
