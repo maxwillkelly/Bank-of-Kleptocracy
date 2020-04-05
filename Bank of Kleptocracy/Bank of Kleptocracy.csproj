@@ -32,6 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -132,6 +137,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\take_card_singular.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insufficient.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash_hole.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card_hole.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
