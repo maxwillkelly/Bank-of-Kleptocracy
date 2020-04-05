@@ -101,6 +101,26 @@ namespace Bank_of_Kleptocracy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deposit {
+            get {
+                object obj = ResourceManager.GetObject("deposit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deposit_complete {
+            get {
+                object obj = ResourceManager.GetObject("deposit_complete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icon {
@@ -186,6 +206,16 @@ namespace Bank_of_Kleptocracy.Properties {
         internal static System.Drawing.Bitmap take_cash {
             get {
                 object obj = ResourceManager.GetObject("take_cash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap too_large {
+            get {
+                object obj = ResourceManager.GetObject("too_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
