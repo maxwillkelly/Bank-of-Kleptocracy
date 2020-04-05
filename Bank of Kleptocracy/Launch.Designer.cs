@@ -136,7 +136,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(232, 170);
+            this.label2.Location = new System.Drawing.Point(228, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(504, 32);
             this.label2.TabIndex = 7;
@@ -144,13 +144,11 @@
             // 
             // menuStrip
             // 
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStrip});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(933, 33);
             this.menuStrip.TabIndex = 8;
             this.menuStrip.Text = "menuStrip1";
@@ -200,7 +198,7 @@
             // 
             this.groupBoxSimType.Controls.Add(this.radioBtnIncorrectBalance);
             this.groupBoxSimType.Controls.Add(this.radioBtnCorrectBalance);
-            this.groupBoxSimType.Location = new System.Drawing.Point(237, 234);
+            this.groupBoxSimType.Location = new System.Drawing.Point(238, 234);
             this.groupBoxSimType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxSimType.Name = "groupBoxSimType";
             this.groupBoxSimType.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
