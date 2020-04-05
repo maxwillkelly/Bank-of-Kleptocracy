@@ -432,6 +432,9 @@ namespace Bank_of_Kleptocracy
                             // Allows the user to input an amount
                             displaySpecifyDeposit();
                             break;
+                        case "Eject Card":
+                            processEject();
+                            break;
                         default:
                             Console.WriteLine("Operation not identified: " + label.Text);
                             break;
@@ -622,6 +625,8 @@ namespace Bank_of_Kleptocracy
             lblMiddleRight.Visible = true;
             lblBottomLeft.Text = "Deposit";
             lblBottomLeft.Visible = true;
+            lblBottomRight.Text = "Eject Card";
+            lblBottomRight.Visible = true;
         }
 
         // Allows the user to input an amount
