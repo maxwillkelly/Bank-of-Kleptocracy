@@ -169,8 +169,10 @@ namespace Bank_of_Kleptocracy
                 {
                     if (amount <= accounts[accIndex].Balance)   //* if amount to withdraw is less or equal to account balance
                     {
+                        int bal = accounts[accIndex].Balance;   //* get balance before the delay
                         Thread.Sleep(delay);                    //* delay thread for demonstration purposes
-                        accounts[accIndex].Balance -= amount; 	//* decrement amount from account balance
+                        bal -= amount; 	                        //* decrement amount from account balance
+                        accounts[accIndex].Balance = bal;      //* set new balance
 
                         appendLog("<BANK> Withdrawn [" + amount + "] from balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n");
 
@@ -217,8 +219,10 @@ namespace Bank_of_Kleptocracy
                 {
                     if (accounts[accIndex].Balance + amount <= Int32.MaxValue)  //* if account balance + amount is less or equal to max of INT32 (2,147,483,647) //// Could have made some workarounds but that's not the point of this project
                     {
-                        Thread.Sleep(delay);                                    //* delay thread for demonstration purposes
-                        accounts[accIndex].Balance += amount; 					//* increment amount to account balance
+                        int bal = accounts[accIndex].Balance;       //* get balance before the delay
+                        Thread.Sleep(delay);                        //* delay thread for demonstration purposes
+                        bal -= amount; 	                            //* increment amount to account balance
+                        accounts[accIndex].Balance = bal;          //* set new balance
 
                         appendLog("<BANK> Deposited [" + amount + "] to balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n");
 
