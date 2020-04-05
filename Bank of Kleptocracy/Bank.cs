@@ -221,7 +221,7 @@ namespace Bank_of_Kleptocracy
                     {
                         int bal = accounts[accIndex].Balance;       //* get balance before the delay
                         Thread.Sleep(delay);                        //* delay thread for demonstration purposes
-                        bal -= amount; 	                            //* increment amount to account balance
+                        bal += amount; 	                            //* increment amount to account balance
                         accounts[accIndex].Balance = bal;          //* set new balance
 
                         appendLog("<BANK> Deposited [" + amount + "] to balance of account [" + accNum + "]. New balance: [" + accounts[accIndex].Balance + "]\n");
