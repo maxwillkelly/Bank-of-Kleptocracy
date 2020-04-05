@@ -88,7 +88,7 @@
             this.menuToolStrip});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1158, 36);
+            this.menuStrip.Size = new System.Drawing.Size(1158, 33);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -99,7 +99,7 @@
             this.helpToolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.menuToolStrip.Name = "menuToolStrip";
-            this.menuToolStrip.Size = new System.Drawing.Size(73, 32);
+            this.menuToolStrip.Size = new System.Drawing.Size(73, 29);
             this.menuToolStrip.Text = "Menu";
             // 
             // aboutToolStripMenuItem1
