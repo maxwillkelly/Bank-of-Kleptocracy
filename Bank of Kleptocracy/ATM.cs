@@ -230,7 +230,7 @@ namespace Bank_of_Kleptocracy
         {
             var popup = MessageBox.Show("Inserting a Card:\n\nTo insert a card, click one of the 3  'Insert Card X' buttons.\n" +
                 "\nPin Numbers: \n\nUpon inserting a card you will be asked to insert a pin number. You can find the pin numbers for all our generated accounts in the bank computer form. You can then use the keypad to enter in your pin number. Using the clear button will clear the numbers you entered if you entered a wrong digit in for example" +
-                "\n\nEjecting a Card: \n\nIf you want to eject a card, push the CANCEL button on the keypad", "Cards", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "\n\nEjecting a Card: \n\nIf you want to eject a card, push the CANCEL button on the keypad or press the button adjacent to Eject Card in the bank menu", "Cards", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void aTMMenuToolStripMenuItem_Click(object sender, EventArgs e)
