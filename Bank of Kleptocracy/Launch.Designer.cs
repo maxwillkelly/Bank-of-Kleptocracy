@@ -65,7 +65,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(327, 462);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 20);
+            this.label1.Size = new System.Drawing.Size(114, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Number of ATMs";
             // 
@@ -99,7 +99,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(176, 395);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(636, 32);
+            this.label3.Size = new System.Drawing.Size(540, 29);
             this.label3.TabIndex = 4;
             this.label3.Text = "Choose the number of ATMs you wish to simulate";
             // 
@@ -111,7 +111,7 @@
             this.radioBtnIncorrectBalance.Location = new System.Drawing.Point(79, 25);
             this.radioBtnIncorrectBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioBtnIncorrectBalance.Name = "radioBtnIncorrectBalance";
-            this.radioBtnIncorrectBalance.Size = new System.Drawing.Size(342, 29);
+            this.radioBtnIncorrectBalance.Size = new System.Drawing.Size(296, 24);
             this.radioBtnIncorrectBalance.TabIndex = 5;
             this.radioBtnIncorrectBalance.TabStop = true;
             this.radioBtnIncorrectBalance.Text = "Transactions with incorrect balance";
@@ -125,7 +125,7 @@
             this.radioBtnCorrectBalance.Location = new System.Drawing.Point(79, 60);
             this.radioBtnCorrectBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioBtnCorrectBalance.Name = "radioBtnCorrectBalance";
-            this.radioBtnCorrectBalance.Size = new System.Drawing.Size(327, 29);
+            this.radioBtnCorrectBalance.Size = new System.Drawing.Size(283, 24);
             this.radioBtnCorrectBalance.TabIndex = 6;
             this.radioBtnCorrectBalance.TabStop = true;
             this.radioBtnCorrectBalance.Text = "Transactions with correct balance";
@@ -138,7 +138,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(228, 170);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(504, 32);
+            this.label2.Size = new System.Drawing.Size(425, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "What simulation would you like to see?";
             // 
@@ -149,7 +149,7 @@
             this.menuToolStrip});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(933, 33);
+            this.menuStrip.Size = new System.Drawing.Size(933, 28);
             this.menuStrip.TabIndex = 8;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -160,27 +160,27 @@
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuToolStrip.Name = "menuToolStrip";
-            this.menuToolStrip.Size = new System.Drawing.Size(73, 29);
+            this.menuToolStrip.Size = new System.Drawing.Size(60, 24);
             this.menuToolStrip.Text = "Menu";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -190,7 +190,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(122, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(717, 55);
+            this.label4.Size = new System.Drawing.Size(605, 46);
             this.label4.TabIndex = 9;
             this.label4.Text = "Welcome to our ATM Simulator";
             // 
@@ -223,6 +223,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(951, 737);
+            this.MinimumSize = new System.Drawing.Size(951, 737);
             this.Name = "Launch";
             this.Text = "Launch";
             ((System.ComponentModel.ISupportInitialize)(this.selectorNumAtms)).EndInit();
